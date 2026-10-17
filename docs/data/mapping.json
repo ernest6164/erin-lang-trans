@@ -15,7 +15,10 @@
       "width": 51,
       "height": 86,
       "font_codepoint": "U+FFA1",
-      "font_char": "ﾡ"
+      "font_char": "ﾡ",
+      "discord_code": "erin_r",
+      "discord_shortcode": ":erin_r:",
+      "discord_image": "data/discord_emoji/outline/erin_r.png"
     },
     "ㄴ": {
       "qwerty": "s",
@@ -30,7 +33,10 @@
       "width": 51,
       "height": 86,
       "font_codepoint": "U+FFA4",
-      "font_char": "ﾤ"
+      "font_char": "ﾤ",
+      "discord_code": "erin_s",
+      "discord_shortcode": ":erin_s:",
+      "discord_image": "data/discord_emoji/outline/erin_s.png"
     },
     "ㄷ": {
       "qwerty": "e",
@@ -45,7 +51,10 @@
       "width": 58,
       "height": 86,
       "font_codepoint": "U+FFA7",
-      "font_char": "ﾧ"
+      "font_char": "ﾧ",
+      "discord_code": "erin_e",
+      "discord_shortcode": ":erin_e:",
+      "discord_image": "data/discord_emoji/outline/erin_e.png"
     },
     "ㄹ": {
       "qwerty": "f",
@@ -60,7 +69,10 @@
       "width": 57,
       "height": 86,
       "font_codepoint": "U+FFA9",
-      "font_char": "ﾩ"
+      "font_char": "ﾩ",
+      "discord_code": "erin_f",
+      "discord_shortcode": ":erin_f:",
+      "discord_image": "data/discord_emoji/outline/erin_f.png"
     },
     "ㅁ": {
       "qwerty": "a",
@@ -75,7 +87,10 @@
       "width": 58,
       "height": 86,
       "font_codepoint": "U+FFB1",
-      "font_char": "ﾱ"
+      "font_char": "ﾱ",
+      "discord_code": "erin_a",
+      "discord_shortcode": ":erin_a:",
+      "discord_image": "data/discord_emoji/outline/erin_a.png"
     },
     "ㅂ": {
       "qwerty": "q",
@@ -90,7 +105,10 @@
       "width": 64,
       "height": 86,
       "font_codepoint": "U+FFB2",
-      "font_char": "ﾲ"
+      "font_char": "ﾲ",
+      "discord_code": "erin_q",
+      "discord_shortcode": ":erin_q:",
+      "discord_image": "data/discord_emoji/outline/erin_q.png"
     },
     "ㅅ": {
       "qwerty": "t",
@@ -105,7 +123,10 @@
       "width": 68,
       "height": 86,
       "font_codepoint": "U+FFB5",
-      "font_char": "ﾵ"
+      "font_char": "ﾵ",
+      "discord_code": "erin_t",
+      "discord_shortcode": ":erin_t:",
+      "discord_image": "data/discord_emoji/outline/erin_t.png"
     },
     "ㅇ": {
       "qwerty": "d",
@@ -120,7 +141,10 @@
       "width": 54,
       "height": 86,
       "font_codepoint": "U+FFB7",
-      "font_char": "ﾷ"
+      "font_char": "ﾷ",
+      "discord_code": "erin_d",
+      "discord_shortcode": ":erin_d:",
+      "discord_image": "data/discord_emoji/outline/erin_d.png"
     },
     "ㅈ": {
       "qwerty": "w",
@@ -135,7 +159,10 @@
       "width": 63,
       "height": 86,
       "font_codepoint": "U+FFB8",
-      "font_char": "ﾸ"
+      "font_char": "ﾸ",
+      "discord_code": "erin_w",
+      "discord_shortcode": ":erin_w:",
+      "discord_image": "data/discord_emoji/outline/erin_w.png"
     },
     "ㅊ": {
       "qwerty": "c",
@@ -150,7 +177,10 @@
       "width": 61,
       "height": 86,
       "font_codepoint": "U+FFBA",
-      "font_char": "ﾺ"
+      "font_char": "ﾺ",
+      "discord_code": "erin_c",
+      "discord_shortcode": ":erin_c:",
+      "discord_image": "data/discord_emoji/outline/erin_c.png"
     },
     "ㅋ": {
       "qwerty": "z",
@@ -165,7 +195,10 @@
       "width": 64,
       "height": 86,
       "font_codepoint": "U+FFBB",
-      "font_char": "ﾻ"
+      "font_char": "ﾻ",
+      "discord_code": "erin_z",
+      "discord_shortcode": ":erin_z:",
+      "discord_image": "data/discord_emoji/outline/erin_z.png"
     },
     "ㅌ": {
       "qwerty": "x",
@@ -180,7 +213,10 @@
       "width": 63,
       "height": 86,
       "font_codepoint": "U+FFBC",
-      "font_char": "ﾼ"
+      "font_char": "ﾼ",
+      "discord_code": "erin_x",
+      "discord_shortcode": ":erin_x:",
+      "discord_image": "data/discord_emoji/outline/erin_x.png"
     },
     "ㅍ": {
       "qwerty": "v",
@@ -195,7 +231,10 @@
       "width": 70,
       "height": 86,
       "font_codepoint": "U+FFBD",
-      "font_char": "ﾽ"
+      "font_char": "ﾽ",
+      "discord_code": "erin_v",
+      "discord_shortcode": ":erin_v:",
+      "discord_image": "data/discord_emoji/outline/erin_v.png"
     },
     "ㅎ": {
       "qwerty": "g",
@@ -210,7 +249,10 @@
       "width": 67,
       "height": 86,
       "font_codepoint": "U+FFBE",
-      "font_char": "ﾾ"
+      "font_char": "ﾾ",
+      "discord_code": "erin_g",
+      "discord_shortcode": ":erin_g:",
+      "discord_image": "data/discord_emoji/outline/erin_g.png"
     },
     "ㄲ": {
       "qwerty": "R",
@@ -229,7 +271,10 @@
       "width": 60,
       "height": 86,
       "font_codepoint": "U+FFA2",
-      "font_char": "ﾢ"
+      "font_char": "ﾢ",
+      "discord_code": "erin_rr",
+      "discord_shortcode": ":erin_rr:",
+      "discord_image": "data/discord_emoji/outline/erin_rr.png"
     },
     "ㄸ": {
       "qwerty": "E",
@@ -248,7 +293,10 @@
       "width": 60,
       "height": 86,
       "font_codepoint": "U+FFA8",
-      "font_char": "ﾨ"
+      "font_char": "ﾨ",
+      "discord_code": "erin_ee",
+      "discord_shortcode": ":erin_ee:",
+      "discord_image": "data/discord_emoji/outline/erin_ee.png"
     },
     "ㅃ": {
       "qwerty": "Q",
@@ -267,7 +315,10 @@
       "width": 63,
       "height": 86,
       "font_codepoint": "U+FFB3",
-      "font_char": "ﾳ"
+      "font_char": "ﾳ",
+      "discord_code": "erin_qq",
+      "discord_shortcode": ":erin_qq:",
+      "discord_image": "data/discord_emoji/outline/erin_qq.png"
     },
     "ㅆ": {
       "qwerty": "T",
@@ -286,7 +337,10 @@
       "width": 55,
       "height": 86,
       "font_codepoint": "U+FFB6",
-      "font_char": "ﾶ"
+      "font_char": "ﾶ",
+      "discord_code": "erin_tt",
+      "discord_shortcode": ":erin_tt:",
+      "discord_image": "data/discord_emoji/outline/erin_tt.png"
     },
     "ㅉ": {
       "qwerty": "W",
@@ -305,7 +359,10 @@
       "width": 56,
       "height": 86,
       "font_codepoint": "U+FFB9",
-      "font_char": "ﾹ"
+      "font_char": "ﾹ",
+      "discord_code": "erin_ww",
+      "discord_shortcode": ":erin_ww:",
+      "discord_image": "data/discord_emoji/outline/erin_ww.png"
     },
     "ㅏ": {
       "qwerty": "k",
@@ -324,7 +381,10 @@
       "width": 57,
       "height": 86,
       "font_codepoint": "U+FFC2",
-      "font_char": "ￂ"
+      "font_char": "ￂ",
+      "discord_code": "erin_k",
+      "discord_shortcode": ":erin_k:",
+      "discord_image": "data/discord_emoji/outline/erin_k.png"
     },
     "ㅐ": {
       "qwerty": "o",
@@ -341,7 +401,10 @@
       "width": 66,
       "height": 86,
       "font_codepoint": "U+FFC3",
-      "font_char": "ￃ"
+      "font_char": "ￃ",
+      "discord_code": "erin_o",
+      "discord_shortcode": ":erin_o:",
+      "discord_image": "data/discord_emoji/outline/erin_o.png"
     },
     "ㅓ": {
       "qwerty": "j",
@@ -360,7 +423,10 @@
       "width": 54,
       "height": 86,
       "font_codepoint": "U+FFC6",
-      "font_char": "ￆ"
+      "font_char": "ￆ",
+      "discord_code": "erin_j",
+      "discord_shortcode": ":erin_j:",
+      "discord_image": "data/discord_emoji/outline/erin_j.png"
     },
     "ㅔ": {
       "qwerty": "p",
@@ -377,7 +443,10 @@
       "width": 64,
       "height": 86,
       "font_codepoint": "U+FFC7",
-      "font_char": "ￇ"
+      "font_char": "ￇ",
+      "discord_code": "erin_p",
+      "discord_shortcode": ":erin_p:",
+      "discord_image": "data/discord_emoji/outline/erin_p.png"
     },
     "ㅗ": {
       "qwerty": "h",
@@ -396,7 +465,10 @@
       "width": 61,
       "height": 86,
       "font_codepoint": "U+FFCC",
-      "font_char": "ￌ"
+      "font_char": "ￌ",
+      "discord_code": "erin_h",
+      "discord_shortcode": ":erin_h:",
+      "discord_image": "data/discord_emoji/outline/erin_h.png"
     },
     "ㅚ": {
       "qwerty": "hl",
@@ -413,7 +485,10 @@
       "width": 78,
       "height": 86,
       "font_codepoint": "U+FFCF",
-      "font_char": "ￏ"
+      "font_char": "ￏ",
+      "discord_code": "erin_hl",
+      "discord_shortcode": ":erin_hl:",
+      "discord_image": "data/discord_emoji/outline/erin_hl.png"
     },
     "ㅜ": {
       "qwerty": "n",
@@ -432,7 +507,10 @@
       "width": 59,
       "height": 86,
       "font_codepoint": "U+FFD3",
-      "font_char": "ￓ"
+      "font_char": "ￓ",
+      "discord_code": "erin_n",
+      "discord_shortcode": ":erin_n:",
+      "discord_image": "data/discord_emoji/outline/erin_n.png"
     },
     "ㅟ": {
       "qwerty": "nl",
@@ -449,7 +527,10 @@
       "width": 77,
       "height": 86,
       "font_codepoint": "U+FFD6",
-      "font_char": "ￖ"
+      "font_char": "ￖ",
+      "discord_code": "erin_nl",
+      "discord_shortcode": ":erin_nl:",
+      "discord_image": "data/discord_emoji/outline/erin_nl.png"
     },
     "ㅡ": {
       "qwerty": "m",
@@ -464,7 +545,10 @@
       "width": 50,
       "height": 86,
       "font_codepoint": "U+FFDA",
-      "font_char": "ￚ"
+      "font_char": "ￚ",
+      "discord_code": "erin_m",
+      "discord_shortcode": ":erin_m:",
+      "discord_image": "data/discord_emoji/outline/erin_m.png"
     },
     "ㅣ": {
       "qwerty": "l",
@@ -479,7 +563,10 @@
       "width": 33,
       "height": 86,
       "font_codepoint": "U+FFDC",
-      "font_char": "ￜ"
+      "font_char": "ￜ",
+      "discord_code": "erin_l",
+      "discord_shortcode": ":erin_l:",
+      "discord_image": "data/discord_emoji/outline/erin_l.png"
     },
     "ㅑ": {
       "qwerty": "i",
@@ -498,7 +585,10 @@
       "width": 66,
       "height": 86,
       "font_codepoint": "U+FFC4",
-      "font_char": "ￄ"
+      "font_char": "ￄ",
+      "discord_code": "erin_i",
+      "discord_shortcode": ":erin_i:",
+      "discord_image": "data/discord_emoji/outline/erin_i.png"
     },
     "ㅒ": {
       "qwerty": "O",
@@ -516,7 +606,10 @@
       "width": 66,
       "height": 86,
       "font_codepoint": "U+FFC5",
-      "font_char": "ￅ"
+      "font_char": "ￅ",
+      "discord_code": "erin_oo",
+      "discord_shortcode": ":erin_oo:",
+      "discord_image": "data/discord_emoji/outline/erin_oo.png"
     },
     "ㅕ": {
       "qwerty": "u",
@@ -535,7 +628,10 @@
       "width": 54,
       "height": 86,
       "font_codepoint": "U+FFCA",
-      "font_char": "ￊ"
+      "font_char": "ￊ",
+      "discord_code": "erin_u",
+      "discord_shortcode": ":erin_u:",
+      "discord_image": "data/discord_emoji/outline/erin_u.png"
     },
     "ㅖ": {
       "qwerty": "P",
@@ -553,7 +649,10 @@
       "width": 71,
       "height": 86,
       "font_codepoint": "U+FFCB",
-      "font_char": "ￋ"
+      "font_char": "ￋ",
+      "discord_code": "erin_pp",
+      "discord_shortcode": ":erin_pp:",
+      "discord_image": "data/discord_emoji/outline/erin_pp.png"
     },
     "ㅘ": {
       "qwerty": "hk",
@@ -570,7 +669,10 @@
       "width": 88,
       "height": 86,
       "font_codepoint": "U+FFCD",
-      "font_char": "ￍ"
+      "font_char": "ￍ",
+      "discord_code": "erin_hk",
+      "discord_shortcode": ":erin_hk:",
+      "discord_image": "data/discord_emoji/outline/erin_hk.png"
     },
     "ㅙ": {
       "qwerty": "ho",
@@ -588,7 +690,10 @@
       "width": 92,
       "height": 86,
       "font_codepoint": "U+FFCE",
-      "font_char": "ￎ"
+      "font_char": "ￎ",
+      "discord_code": "erin_ho",
+      "discord_shortcode": ":erin_ho:",
+      "discord_image": "data/discord_emoji/outline/erin_ho.png"
     },
     "ㅛ": {
       "qwerty": "y",
@@ -607,7 +712,10 @@
       "width": 52,
       "height": 86,
       "font_codepoint": "U+FFD2",
-      "font_char": "ￒ"
+      "font_char": "ￒ",
+      "discord_code": "erin_y",
+      "discord_shortcode": ":erin_y:",
+      "discord_image": "data/discord_emoji/outline/erin_y.png"
     },
     "ㅝ": {
       "qwerty": "nj",
@@ -624,7 +732,10 @@
       "width": 93,
       "height": 86,
       "font_codepoint": "U+FFD4",
-      "font_char": "ￔ"
+      "font_char": "ￔ",
+      "discord_code": "erin_nj",
+      "discord_shortcode": ":erin_nj:",
+      "discord_image": "data/discord_emoji/outline/erin_nj.png"
     },
     "ㅞ": {
       "qwerty": "np",
@@ -642,7 +753,10 @@
       "width": 88,
       "height": 86,
       "font_codepoint": "U+FFD5",
-      "font_char": "ￕ"
+      "font_char": "ￕ",
+      "discord_code": "erin_np",
+      "discord_shortcode": ":erin_np:",
+      "discord_image": "data/discord_emoji/outline/erin_np.png"
     },
     "ㅠ": {
       "qwerty": "b",
@@ -661,7 +775,10 @@
       "width": 50,
       "height": 86,
       "font_codepoint": "U+FFD7",
-      "font_char": "ￗ"
+      "font_char": "ￗ",
+      "discord_code": "erin_b",
+      "discord_shortcode": ":erin_b:",
+      "discord_image": "data/discord_emoji/outline/erin_b.png"
     },
     "ㅢ": {
       "qwerty": "ml",
@@ -678,7 +795,10 @@
       "width": 65,
       "height": 86,
       "font_codepoint": "U+FFDB",
-      "font_char": "ￛ"
+      "font_char": "ￛ",
+      "discord_code": "erin_ml",
+      "discord_shortcode": ":erin_ml:",
+      "discord_image": "data/discord_emoji/outline/erin_ml.png"
     }
   },
   "qwerty_to_jamo": {
@@ -757,5 +877,47 @@
     "ￕ": "ㅞ",
     "ￗ": "ㅠ",
     "ￛ": "ㅢ"
+  },
+  "discord_to_jamo": {
+    "erin_r": "ㄱ",
+    "erin_s": "ㄴ",
+    "erin_e": "ㄷ",
+    "erin_f": "ㄹ",
+    "erin_a": "ㅁ",
+    "erin_q": "ㅂ",
+    "erin_t": "ㅅ",
+    "erin_d": "ㅇ",
+    "erin_w": "ㅈ",
+    "erin_c": "ㅊ",
+    "erin_z": "ㅋ",
+    "erin_x": "ㅌ",
+    "erin_v": "ㅍ",
+    "erin_g": "ㅎ",
+    "erin_rr": "ㄲ",
+    "erin_ee": "ㄸ",
+    "erin_qq": "ㅃ",
+    "erin_tt": "ㅆ",
+    "erin_ww": "ㅉ",
+    "erin_k": "ㅏ",
+    "erin_o": "ㅐ",
+    "erin_j": "ㅓ",
+    "erin_p": "ㅔ",
+    "erin_h": "ㅗ",
+    "erin_hl": "ㅚ",
+    "erin_n": "ㅜ",
+    "erin_nl": "ㅟ",
+    "erin_m": "ㅡ",
+    "erin_l": "ㅣ",
+    "erin_i": "ㅑ",
+    "erin_oo": "ㅒ",
+    "erin_u": "ㅕ",
+    "erin_pp": "ㅖ",
+    "erin_hk": "ㅘ",
+    "erin_ho": "ㅙ",
+    "erin_y": "ㅛ",
+    "erin_nj": "ㅝ",
+    "erin_np": "ㅞ",
+    "erin_b": "ㅠ",
+    "erin_ml": "ㅢ"
   }
 }

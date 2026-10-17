@@ -10,19 +10,21 @@
   - Windows PowerShell 실행 예시: `.\.venv\Scripts\python.exe script/extract_chars.py`
   - 패키지 설치 예시: `.\.venv\Scripts\python.exe -m pip install -r requirements.txt`
 - **`docs/`** : **GitHub Pages 배포 루트 디렉토리 (`/docs` 경로 서비스)**
-  - `docs/index.html` : 한국어/영어 ↔ 에린어 번역기, 전용 웹폰트(`ErinLang`) 변환기 및 스크린샷 에린어 OCR 해독기 정적 웹 애플리케이션
-  - `docs/data/` : GitHub Pages 정적 웹앱에서 참조하는 투명 문자 이미지(`transparent/*.png`), 전용 폰트(`ErinLang.ttf`, `ErinLang.woff2`), `mapping.json`, `ocr_templates.js` 등 (`script/` 실행 시 `data/`와 자동 동기화)
+  - `docs/index.html` : 한국어/영어 ↔ 에린어 번역기, 전용 웹폰트(`ErinLang`) 변환기, 디스코드 커스텀 이모지(`:erin_*:`) 변환기/시뮬레이터 및 스크린샷 에린어 OCR 해독기 정적 웹 애플리케이션
+  - `docs/data/` : GitHub Pages 정적 웹앱에서 참조하는 투명 문자 이미지(`transparent/*.png`), 전용 폰트(`ErinLang.ttf`, `ErinLang.woff2`), 디스코드 이모지 팩(`discord_emoji/`), `mapping.json`, `ocr_templates.js` 등 (`script/` 실행 시 `data/`와 자동 동기화)
 - **`data/`** : 프로젝트 내에서 반복해서 사용할 정제 데이터 원본 저장
   - `data/transparent/<자모>.png` : 변환표에서 추출 후 **배경 투명 + 글자 검은색(`#000000`)**으로 보정 및 좌우 여백 최적화한 이미지 (`height=86`, 단순 크롭 타일은 제거)
+  - `data/discord_emoji/` : 디스코드 커스텀 이모지 표준 규격(`128x128` 정사각형 PNG)으로 생성한 4종 스타일(`outline`, `slate`, `white`, `black`) 이미지 및 서버 슬롯 맞춤형 일괄 업로드용 ZIP 패키지(`erin_discord_emoji_<style>_<40|31|26>.zip`)
   - `data/ErinLang.ttf`, `data/ErinLang.woff2` : 일반 한글(`U+AC00~U+D7A3`, `U+3131~U+3163`)이나 영문자(`A-Z`, `a-z`)는 건드리지 않고, 유니코드 `Halfwidth and Fullwidth Forms` 블록 내 한글 자모 코드(`U+FFA1` ~ `U+FFDC`)만 에린어 벡터 글리프로 렌더링하는 전용 폰트
-  - `data/mapping.json` : 한글 자모, 영문(두벌식 쿼티) 키, 전용 폰트 유니코드(`U+FFA1~U+FFDC`), 대칭/분해 규칙, 맞춤법 주의사항, 이미지 경로 메타데이터
+  - `data/mapping.json` : 한글 자모, 영문(두벌식 쿼티) 키, 전용 폰트 유니코드(`U+FFA1~U+FFDC`), 디스코드 단축코드(`:erin_*:`), 대칭/분해 규칙, 맞춤법 주의사항, 이미지 경로 메타데이터
   - `data/ocr_templates.json`, `data/ocr_templates.js` : 스크린샷 OCR 매칭을 위한 `28x28` 양선형 보간 정규화 템플릿 데이터 (`ㅒ`/`ㅖ` 우측 반점 분리 컴포넌트 `ㅣ'`, `ㅏ'` 포함 31종)
 - **`import/`** : 외부에서 가져온 원본 리소스 저장 (`.gitignore`에 의해 Git 추적 제외)
   - `import/19d00ea17f157c624.webp` : 마비노기 한국어-에린어 변환표 원본 이미지
-- **`script/`** : 데이터 추출·가공 및 폰트 생성 파이썬 스크립트 저장
+- **`script/`** : 데이터 추출·가공 및 폰트/이모지 생성 파이썬 스크립트 저장
   - `script/extract_chars.py` : `import/`의 변환표에서 개별 문자를 투명 배경 + 검은색(`#000000`) 글리프로 추출하여 `data/transparent/` 및 `docs/data/transparent/`에 저장하는 스크립트
   - `script/build_ocr_templates.py` : `data/transparent/*.png`에서 OCR용 `28x28` 정규화 템플릿 그리드를 생성하여 `data/` 및 `docs/data/`에 저장하는 스크립트
   - `script/build_font.py` : `data/transparent/*.png`를 벡터 윤곽선(TrueType 2차 베지어 스플라인)으로 트레이싱하여 `U+FFA1~U+FFDC` 영역에 매핑된 `ErinLang.ttf` 및 `ErinLang.woff2` 폰트를 생성하는 스크립트
+  - `script/build_discord_emojis.py` : `data/transparent/*.png`에서 디스코드 서버 등록용 `128x128` 정사각형 이모지(`outline`, `slate`, `white`, `black` 4종 스타일) 및 슬롯별(`40종`/`31종`/`26종`) 일괄 업로드 ZIP 패키지를 생성하여 `data/discord_emoji/` 및 `docs/data/discord_emoji/`에 저장하는 스크립트
 - **`sample/`** : 번역 대상(에린어가 포함된 인게임 스크린샷 등) 저장 (`.gitignore`에 의해 Git 추적 제외)
   - `sample/MabinogiMobile_2026101714515366.png` : 인게임 에린어 문구 샘플 스크린샷 (`패션 선언` 본문)
 
@@ -71,3 +73,11 @@
 - 따라서 `ErinLang.ttf` / `ErinLang.woff2` 폰트는:
   - 완성형 한글(`가`~`힣`, `U+AC00`~`U+D7A3`), 일반 한글 호환 자모(`ㄱ`~`ㅣ`, `U+3131`~`U+3163`), 영문자(`A-Z`, `a-z`)는 **일절 변경하지 않고 기본 폰트로 폴백**되도록 비워 두었으며,
   - **`U+FFA1` ~ `U+FFDC` 영역의 한글 자모 51종(기본/쌍자음·모음 40종 + 겹받침 11종)**만 에린어 전각 비례 글리프로 매핑하여 한 문장 안에서 일반 한국어/영어와 에린어를 충돌 없이 함께 사용할 수 있습니다.
+
+### 3.6 디스코드 커스텀 이모지 체계 (`:erin_*:`)
+- 디스코드 이모지 이름은 영문/숫자/`_`만 허용되며 Windows 파일시스템(대소문자 비구분)과 디스코드 일괄 업로드를 모두 호환해야 하므로, **모든 이모지 파일명과 단축코드를 영문 소문자(`erin_<두벌식코드>`)**로 통일합니다.
+  - 기본 키(26종): `erin_a` ~ `erin_z` (예: `ㄱ`=`erin_r`, `ㅏ`=`erin_k`, `ㅐ`=`erin_o`, `ㅔ`=`erin_p`)
+  - Shift 키(7종): 소문자 2회 반복 (`ㄲ`=`erin_rr`, `ㄸ`=`erin_ee`, `ㅃ`=`erin_qq`, `ㅆ`=`erin_tt`, `ㅉ`=`erin_ww`, `ㅒ`=`erin_oo`, `ㅖ`=`erin_pp`)
+  - 조합 복합모음(7종): 두벌식 타자 순서 그대로 (`ㅚ`=`erin_hl`, `ㅟ`=`erin_nl`, `ㅘ`=`erin_hk`, `ㅙ`=`erin_ho`, `ㅝ`=`erin_nj`, `ㅞ`=`erin_np`, `ㅢ`=`erin_ml`)
+- 디스코드 서버의 무료 이모지 슬롯 제한(기본 50개)을 고려해 **전체 40종 세트**, **필수 31종 세트**(복합모음 9종 분해 조합), **최소 26종 세트**(쌍자음 5종 + 복합모음 9종 분해 조합) 3가지 ZIP 패키지와 4가지 스타일(`outline`, `slate`, `white`, `black`)을 제공합니다.
+

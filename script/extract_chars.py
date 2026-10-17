@@ -172,6 +172,7 @@ def extract_all():
         "characters": {},
         "qwerty_to_jamo": {},
         "ff_unicode_to_jamo": {},
+        "discord_to_jamo": {},
     }
 
     count = 0
@@ -193,6 +194,10 @@ def extract_all():
             ff_char = chr(ff_cp)
 
             meta = CHAR_METADATA[jamo].copy()
+            qwerty_key = meta["qwerty"]
+            discord_suffix = qwerty_key.lower() * 2 if qwerty_key.isupper() else qwerty_key.lower()
+            discord_name = f"erin_{discord_suffix}"
+
             meta.update({
                 "jamo": jamo,
                 "row": r_idx + 1,
@@ -202,13 +207,16 @@ def extract_all():
                 "height": trans_img.height,
                 "font_codepoint": f"U+{ff_cp:04X}",
                 "font_char": ff_char,
+                "discord_code": discord_name,
+                "discord_shortcode": f":{discord_name}:",
+                "discord_image": f"data/discord_emoji/outline/{discord_name}.png",
             })
             mapping_output["characters"][jamo] = meta
 
-            qwerty_key = meta["qwerty"]
             if len(qwerty_key) == 1:
                 mapping_output["qwerty_to_jamo"][qwerty_key] = jamo
             mapping_output["ff_unicode_to_jamo"][ff_char] = jamo
+            mapping_output["discord_to_jamo"][discord_name] = jamo
 
             count += 1
 

@@ -770,19 +770,221 @@
     .beta-notice strong {
       color: var(--gold);
     }
+
+    /* 디스코드 이모지 탭 & 시뮬레이터 스타일 */
+    .erin-viewport.style-discord {
+      background: #313338;
+      border: 2px solid #5865f2;
+      color: #f2f3f5;
+    }
+
+    .glyph-discord {
+      height: var(--glyph-height);
+      width: var(--glyph-height);
+      object-fit: contain;
+      user-select: none;
+    }
+
+    .discord-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(88, 101, 242, 0.22);
+      color: #99a5ff;
+      border: 1px solid rgba(88, 101, 242, 0.55);
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    .tab-btn.active .discord-badge {
+      background: #101521;
+      color: #99a5ff;
+      border-color: #101521;
+    }
+
+    button.discord-btn {
+      background: #5865f2;
+      color: #ffffff;
+      border-color: #5865f2;
+    }
+
+    button.discord-btn:hover {
+      background: #4752c4;
+      border-color: #4752c4;
+    }
+
+    .discord-sim-wrap {
+      border-radius: 12px;
+      padding: 18px 16px;
+      border: 1px solid var(--border);
+      min-height: 220px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .discord-sim-wrap.theme-dark {
+      background: #313338;
+      color: #dbdee1;
+      border-color: #3f4147;
+    }
+
+    .discord-sim-wrap.theme-onyx {
+      background: #111214;
+      color: #dbdee1;
+      border-color: #2b2d31;
+    }
+
+    .discord-sim-wrap.theme-light {
+      background: #ffffff;
+      color: #313338;
+      border-color: #d4d7dc;
+    }
+
+    .discord-msg {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .discord-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5865f2 0%, #384f6b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .discord-avatar img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .discord-msg-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .discord-msg-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .discord-username {
+      font-weight: 700;
+      font-size: 0.94rem;
+      color: #f2f3f5;
+    }
+
+    .theme-light .discord-username {
+      color: #060607;
+    }
+
+    .discord-timestamp {
+      font-size: 0.74rem;
+      color: #949ba4;
+    }
+
+    .discord-emoji-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 4px;
+      min-height: 28px;
+    }
+
+    .discord-emoji-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      vertical-align: bottom;
+      transition: width 0.12s, height 0.12s;
+    }
+
+    .discord-emoji-img.inline-size {
+      width: 24px;
+      height: 24px;
+    }
+
+    .discord-word-gap {
+      display: inline-block;
+      width: 22px;
+      height: 24px;
+    }
+
+    .guide-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .guide-step {
+      background: #141824;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .guide-step-num {
+      display: inline-block;
+      background: rgba(88, 101, 242, 0.22);
+      color: #99a5ff;
+      border: 1px solid rgba(88, 101, 242, 0.5);
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 1px 8px;
+      border-radius: 999px;
+      margin-right: 6px;
+    }
+
+    .pack-summary-box {
+      margin-top: 14px;
+      background: linear-gradient(135deg, rgba(88, 101, 242, 0.16) 0%, rgba(122, 162, 247, 0.08) 100%);
+      border: 1px solid rgba(88, 101, 242, 0.5);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .shortcode-box {
+      width: 100%;
+      min-height: 108px;
+      background: #141824;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: #99a5ff;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      padding: 10px 12px;
+      margin-top: 8px;
+      resize: vertical;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <span class="badge-top">Mabinogi Erin Language Translator · OCR · Dedicated Font</span>
+      <span class="badge-top">Mabinogi Erin Language Translator · OCR · Dedicated Font · Discord Emoji</span>
       <h1>한국어 / 영어 ↔ 에린어 양방향 번역기</h1>
-      <p class="subtitle">텍스트를 에린어 이미지·전용 폰트(`U+FFA1~U+FFDC`)로 변환하거나, 인게임 스크린샷에서 에린어를 추출해 한국어·영어로 해독합니다.</p>
+      <p class="subtitle">텍스트를 에린어 이미지·전용 폰트(`U+FFA1~U+FFDC`)·디스코드 커스텀 이모지로 변환하거나, 인게임 스크린샷에서 에린어를 추출해 해독합니다.</p>
     </header>
 
     <!-- 상단 탭 네비게이션 -->
-    <div class="mode-tabs">
+    <div class="mode-tabs" style="flex-wrap: wrap;">
       <button type="button" class="tab-btn active" id="tabBtnText">✍️ 한국어/영어 → 에린어 번역 & 폰트</button>
+      <button type="button" class="tab-btn" id="tabBtnDiscord">💬 디스코드 이모지 팩 & 서버 등록 가이드 <span class="discord-badge">128×128 PNG</span></button>
       <button type="button" class="tab-btn" id="tabBtnOcr">📷 스크린샷 → 한국어/영어 해독 (OCR) <span class="beta-badge">Beta</span></button>
     </div>
 
@@ -792,7 +994,7 @@
         <!-- 좌측: 입력 및 변환 설정 -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">✍️ 원문 입력 (한국어 / 영어 / 에린어 유니코드)</div>
+            <div class="card-title">✍️ 원문 입력 (한국어 / 영어 / 유니코드 / :erin_*: 코드)</div>
             <div class="preset-group">
               <button type="button" id="btnPresetPoem" class="primary">인게임 샘플 (패션 선언)</button>
               <button type="button" id="btnPresetOrtho">맞춤법 예시 (ㅐ·ㅔ·ㅒ·ㅖ)</button>
@@ -801,7 +1003,7 @@
             </div>
           </div>
 
-          <textarea id="inputText" placeholder="한국어 또는 영어를 입력하세요...&#10;예: 패션 선언&#10;예: AMY / qlqjq didsua"></textarea>
+          <textarea id="inputText" placeholder="한국어, 영어, 전용 폰트 문자, 또는 디스코드 이모지 코드(:erin_v::erin_o:...)를 입력하세요...&#10;예: 패션 선언&#10;예: AMY / :erin_v::erin_o::erin_t::erin_u::erin_s:"></textarea>
 
           <div class="options-box">
             <div class="opt-item">
@@ -826,6 +1028,8 @@
                 <option value="monument" selected>"패션 선언" 스타일 (투명 PNG 반전)</option>
                 <option value="black">검은색(#000000) 투명 PNG 원본</option>
                 <option value="webfont">전용 웹폰트(ErinLang · U+FFA1~U+FFDC 텍스트)</option>
+                <option value="discord_outline">디스코드 이모지 (외곽선 · 다크/라이트 겸용)</option>
+                <option value="discord_slate">디스코드 이모지 (인게임 비석 타일 배지)</option>
               </select>
             </div>
 
@@ -835,6 +1039,7 @@
                 <option value="none" selected>숨기기 (순수 에린어만 표시)</option>
                 <option value="jamo">한글 자모 표시 (ㅍ, ㅐ...)</option>
                 <option value="qwerty">영문 쿼티 표시 (v, o...)</option>
+                <option value="discord">디스코드 코드 표시 (:erin_v:...)</option>
                 <option value="both">한글 + 영문 동시 표시</option>
               </select>
             </div>
@@ -871,6 +1076,11 @@
               <span class="breakdown-val" id="fontCodeOutput">-</span>
               <button type="button" id="btnCopyFontText" style="margin-left: auto; flex-shrink: 0;">📋 폰트 문자 복사</button>
             </div>
+            <div class="breakdown-row">
+              <span class="breakdown-tag" style="color: #99a5ff;">디스코드 이모지</span>
+              <span class="breakdown-val" id="discordCodeOutput" style="max-height: 44px; overflow-y: auto; font-size: 0.78rem; color: #b5bfff;">-</span>
+              <button type="button" id="btnCopyDiscordText" class="discord-btn" style="margin-left: auto; flex-shrink: 0;">📋 이모지 코드 복사</button>
+            </div>
           </div>
         </div>
 
@@ -881,6 +1091,7 @@
             <div class="preset-group">
               <a href="data/ErinLang.ttf" download="ErinLang.ttf" style="text-decoration: none;"><button type="button">🔤 폰트(.ttf)</button></a>
               <a href="data/ErinLang.woff2" download="ErinLang.woff2" style="text-decoration: none;"><button type="button">🔤 웹폰트(.woff2)</button></a>
+              <button type="button" id="btnGoDiscordTab" class="discord-btn">💬 디스코드 이모지 팩</button>
               <button type="button" id="btnSendRenderToOcr" class="gold">📷 OCR 탭에서 해독 테스트</button>
               <button type="button" id="btnDownloadPng" class="primary">💾 이미지(PNG) 저장</button>
             </div>
@@ -894,6 +1105,142 @@
               <span style="color: var(--text-muted); font-size: 0.76rem;">일반 한글·단순 자모(`U+3131~`)·영문자는 유지되고 `U+FFA1~U+FFDC`만 에린어로 표시됩니다</span>
             </div>
             <div class="font-demo-preview" id="fontMixedPreview"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 탭 3: 디스코드 이모지 팩 & 서버 등록 가이드 ==================== -->
+    <div id="panelDiscord" class="tab-panel">
+      <div class="grid-main">
+        <!-- 좌측: 이모지 팩 ZIP 다운로드 & 서버 등록 가이드 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📦 1. 디스코드 서버용 이모지 팩 (.zip) 다운로드</div>
+            <span class="discord-badge">128×128 정사각형 PNG · 256KB 이하 규격 완벽 준수</span>
+          </div>
+
+          <div class="options-box" style="margin-top: 0; padding-top: 0; border-top: none;">
+            <div class="opt-item">
+              <label class="opt-label" for="discordPackStyle">이모지 디자인 스타일</label>
+              <select id="discordPackStyle">
+                <option value="outline" selected>외곽선 스타일 (흰색+진남색 테두리 · 다크/라이트 겸용) [추천]</option>
+                <option value="slate">인게임 비석 타일 스타일 (둥근 슬레이트 배지 + 각인)</option>
+                <option value="white">순수 화이트 스타일 (투명 배경 #FFFFFF · 다크 모드용)</option>
+                <option value="black">순수 블랙 스타일 (투명 배경 #000000 · 라이트 모드용)</option>
+              </select>
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="discordPackSet">서버 이모지 슬롯 맞춤형 세트 구성</label>
+              <select id="discordPackSet">
+                <option value="40" selected>전체 40종 세트 (슬롯 40개 · 모든 쌍자음/복합모음 단일 이모지)</option>
+                <option value="31">필수 31종 세트 (슬롯 31개 · 복합모음 9종은 조합 표기로 절약)</option>
+                <option value="26">최소 26종 세트 (슬롯 26개 · 쌍자음/복합모음 모두 조합하여 슬롯 최소)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pack-summary-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <div style="font-weight: 700; font-size: 0.94rem; color: #eef2ff;" id="discordPackSummaryTitle">
+                  외곽선 스타일 · 전체 40종 이모지 팩 (`erin_discord_emoji_outline_40.zip`)
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;" id="discordPackSummaryDesc">
+                  기본자음(14) + 쌍자음(5) + 기본모음(10) + 복합모음(11) = 총 40개 (기본 서버 무료 슬롯 50개 이내)
+                </div>
+              </div>
+              <a id="discordZipDownloadLink" href="data/discord_emoji/erin_discord_emoji_outline_40.zip" download="erin_discord_emoji_outline_40.zip" style="text-decoration: none;">
+                <button type="button" class="discord-btn" style="padding: 9px 16px; font-size: 0.9rem;">
+                  📥 이모지 팩 (.zip) 다운로드
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div class="guide-step-list">
+            <div class="guide-step">
+              <span class="guide-step-num">STEP 1</span>
+              <strong>이모지 팩 ZIP 다운로드 & 압축 해제</strong><br />
+              위 버튼으로 서버 슬롯 여유에 맞는 <strong>ZIP 파일(40종 / 31종 / 26종)</strong>을 받아 폴더에 압축을 풀어주세요. 모든 파일명이 <code>erin_r.png</code>(ㄱ), <code>erin_rr.png</code>(ㄲ), <code>erin_o.png</code>(ㅐ), <code>erin_oo.png</code>(ㅒ)처럼 영문 소문자 규칙으로 지정되어 있습니다.
+            </div>
+            <div class="guide-step">
+              <span class="guide-step-num">STEP 2</span>
+              <strong>디스코드 서버 설정 → 이모지 일괄 업로드 (10초 완료)</strong><br />
+              디스코드 좌측 상단 <strong>서버 이름 클릭 → 서버 설정(Server Settings) → 이모지(Emoji) → 이모지 업로드(Upload Emoji)</strong> 버튼을 누른 뒤, 압축 푼 폴더의 PNG 파일들을 <strong><code>Ctrl+A</code>(전체 선택)하여 한 번에 열기</strong> 하세요.<br />
+              <span style="color: var(--gold);">💡 팁: 파일명이 곧바로 이모지 이름(<code>:erin_r:</code> 등)으로 자동 등록되므로 이름을 일일이 수정할 필요가 전혀 없습니다!</span>
+            </div>
+            <div class="guide-step">
+              <span class="guide-step-num">STEP 3</span>
+              <strong>번역기에서 `:erin_*:` 코드 복사 → 디스코드 채팅창에 붙여넣기</strong><br />
+              우측(또는 첫 번째 탭)에서 한국어나 영어를 입력하고 <strong><code>📋 디스코드 텍스트 복사</code></strong>를 눌러 채팅창에 붙여넣으면(<code>Ctrl+V</code>) 에린어 이모지 문장으로 전송됩니다! 한 줄(메시지)당 이모지가 <strong>27개 이하</strong>이고 일반 문자가 없으면 디스코드에서 <strong>점보 크기(크게 보기)</strong>로 출력됩니다.
+            </div>
+            <div class="guide-step">
+              <span class="guide-step-num">STEP 4</span>
+              <strong>디스코드 채팅 → 한국어로 역해독하기</strong><br />
+              다른 서버원이 올린 에린어 이모지 메시지를 드래그하여 복사한 뒤, 이 번역기의 <strong>원문 입력창에 그대로 붙여넣으면</strong>(<code>:erin_v::erin_o:...</code> 또는 <code>&lt;:erin_v:ID&gt;</code> 형태 모두 자동 인식) 즉시 한국어(모아쓰기)로 해독됩니다!
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 실시간 디스코드 채팅 시뮬레이터 & 단축코드 복사기 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">💬 2. 실시간 디스코드 채팅 미리보기 & 코드 생성기</div>
+            <div class="preset-group">
+              <button type="button" id="btnTestReverseDecode" class="gold">🔄 역해독 테스트 (:erin_*: → 한글)</button>
+            </div>
+          </div>
+
+          <div class="options-box" style="margin-top: 0; padding-top: 0; border-top: none; margin-bottom: 14px;">
+            <div class="opt-item">
+              <label class="opt-label" for="discordThemeMode">디스코드 배경 테마 미리보기</label>
+              <select id="discordThemeMode">
+                <option value="dark" selected>디스코드 다크 모드 (#313338)</option>
+                <option value="onyx">디스코드 오닉스/애쉬 모드 (#111214)</option>
+                <option value="light">디스코드 라이트 모드 (#FFFFFF)</option>
+              </select>
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="discordSpaceMode">단어 사이 띄어쓰기 표현</label>
+              <select id="discordSpaceMode">
+                <option value="ideographic" selected>전각 공백 (　) [점보 이모지 크기 유지 · 추천]</option>
+                <option value="triple">일반 스페이스 3칸 (   )</option>
+                <option value="slash">슬래시 구분자 ( / ) [일반 이모지 크기]</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 디스코드 채팅 시뮬레이터 -->
+          <div id="discordSimWrap" class="discord-sim-wrap theme-dark">
+            <div class="discord-msg">
+              <div class="discord-avatar">
+                <img src="data/discord_emoji/outline/erin_a.png" alt="avatar" />
+              </div>
+              <div class="discord-msg-body">
+                <div class="discord-msg-header">
+                  <span class="discord-username">밀레시안</span>
+                  <span class="discord-timestamp">오늘 오후 9:10</span>
+                  <span id="discordJumboBadge" class="discord-badge" style="margin-left: auto;">점보 이모지 크기</span>
+                </div>
+                <div id="discordChatPreview"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main);">
+                📋 디스코드 붙여넣기용 단축코드 (<span id="discordStatLabel" style="color: var(--gold);">이모지 0개 · 0 / 2000자</span>)
+              </span>
+              <div class="preset-group">
+                <button type="button" id="btnCopyDiscordFirstLine">1줄만 복사 (제목/점보용)</button>
+                <button type="button" id="btnCopyDiscordFull" class="discord-btn">📋 전체 디스코드 텍스트 복사</button>
+              </div>
+            </div>
+            <textarea id="discordShortcodeTextarea" class="shortcode-box" readonly></textarea>
           </div>
         </div>
       </div>
@@ -1121,6 +1468,20 @@
       FF_CHAR_TO_JAMO[ch] = jamo;
     }
 
+    // 디스코드 커스텀 이모지 이름 매핑 (소문자 전용: 대소문자 구분 없는 파일시스템 및 디스코드 자동완성 호환)
+    // Shift 대문자 키(R, E, Q, T, W, O, P)는 소문자 2회 반복(rr, ee, qq, tt, ww, oo, pp)으로 매핑
+    const JAMO_TO_DISCORD_CODE = {};
+    const DISCORD_SUFFIX_TO_JAMO = {};
+    for (const [jamo, qwerty] of Object.entries(JAMO_TO_QWERTY)) {
+      const suffix = qwerty === qwerty.toUpperCase() && qwerty.length === 1
+        ? qwerty.toLowerCase() + qwerty.toLowerCase()
+        : qwerty.toLowerCase();
+      const code = `erin_${suffix}`;
+      JAMO_TO_DISCORD_CODE[jamo] = code;
+      DISCORD_SUFFIX_TO_JAMO[suffix] = jamo;
+      DISCORD_SUFFIX_TO_JAMO[code] = jamo;
+    }
+
     const SYMMETRY_INFO = {
       "ㄲ": "ㄱ + 우측 상단 반점", "ㄸ": "ㄷ + 우측 상단 반점", "ㅃ": "ㅂ + 우측 상단 반점",
       "ㅆ": "ㅅ + 우측 상단 반점", "ㅉ": "ㅈ + 우측 상단 반점",
@@ -1167,28 +1528,29 @@
 
     // ==================== 탭 전환 ====================
     const tabBtnText = document.getElementById("tabBtnText");
+    const tabBtnDiscord = document.getElementById("tabBtnDiscord");
     const tabBtnOcr = document.getElementById("tabBtnOcr");
     const panelText = document.getElementById("panelText");
+    const panelDiscord = document.getElementById("panelDiscord");
     const panelOcr = document.getElementById("panelOcr");
 
     function switchTab(mode) {
-      if (mode === "text") {
-        tabBtnText.classList.add("active");
-        tabBtnOcr.classList.remove("active");
-        panelText.classList.add("active");
-        panelOcr.classList.remove("active");
-      } else {
-        tabBtnOcr.classList.add("active");
-        tabBtnText.classList.remove("active");
-        panelOcr.classList.add("active");
-        panelText.classList.remove("active");
-        if (!ocrState.imgLoaded) {
-          loadTargetSampleImage();
-        }
+      tabBtnText.classList.toggle("active", mode === "text");
+      tabBtnDiscord.classList.toggle("active", mode === "discord");
+      tabBtnOcr.classList.toggle("active", mode === "ocr");
+
+      panelText.classList.toggle("active", mode === "text");
+      panelDiscord.classList.toggle("active", mode === "discord");
+      panelOcr.classList.toggle("active", mode === "ocr");
+
+      if (mode === "ocr" && !ocrState.imgLoaded) {
+        loadTargetSampleImage();
       }
+      renderCharTable();
     }
 
     tabBtnText.addEventListener("click", () => switchTab("text"));
+    tabBtnDiscord.addEventListener("click", () => switchTab("discord"));
     tabBtnOcr.addEventListener("click", () => switchTab("ocr"));
 
     // ==================== 탭 1: 텍스트 -> 에린어 번역 로직 ====================
@@ -1205,7 +1567,67 @@
     const qwertyOutput = document.getElementById("qwertyOutput");
     const assembledOutput = document.getElementById("assembledOutput");
     const fontCodeOutput = document.getElementById("fontCodeOutput");
+    const discordCodeOutput = document.getElementById("discordCodeOutput");
     const fontMixedPreview = document.getElementById("fontMixedPreview");
+
+    function resolveDiscordEmojiNameToJamo(rawName) {
+      if (!rawName) return null;
+      const lower = rawName.toLowerCase();
+      if (DISCORD_SUFFIX_TO_JAMO[lower]) return DISCORD_SUFFIX_TO_JAMO[lower];
+      const idx = lower.lastIndexOf("_");
+      if (idx !== -1) {
+        const suffix = lower.slice(idx + 1);
+        if (DISCORD_SUFFIX_TO_JAMO[suffix]) return DISCORD_SUFFIX_TO_JAMO[suffix];
+      }
+      return null;
+    }
+
+    function tokenizeInputLine(line, expandDoubleConsonant, expandCompoundVowel) {
+      // 디스코드 이모지 단축코드(:erin_v: 또는 <:erin_v:1234567890>)가 포함된 경우 토큰 분리 및 역해독 지원
+      const emojiRegex = /<a?:([a-zA-Z0-9_]+):\d+>|:([a-zA-Z0-9_]+):/g;
+      const hasDiscordEmoji = emojiRegex.test(line);
+      emojiRegex.lastIndex = 0;
+
+      if (!hasDiscordEmoji) {
+        const out = [];
+        for (const ch of line) {
+          out.push(...charToJamoTokens(ch === "\u3000" ? " " : ch, expandDoubleConsonant, expandCompoundVowel));
+        }
+        return out;
+      }
+
+      const tokens = [];
+      let lastIndex = 0;
+      let match;
+      while ((match = emojiRegex.exec(line)) !== null) {
+        if (match.index > lastIndex) {
+          const between = line.slice(lastIndex, match.index);
+          // 이모지 사이의 전각 공백(　), 연속 스페이스, 또는 ' / ' 구분자를 단어 공백으로 정규화
+          const normalizedBetween = between.replace(/\s*\/\s*/g, " ").replace(/[ \u3000]+/g, " ");
+          for (const ch of normalizedBetween) {
+            tokens.push(...charToJamoTokens(ch, expandDoubleConsonant, expandCompoundVowel));
+          }
+        }
+        const emojiName = match[1] || match[2];
+        const mappedJamo = resolveDiscordEmojiNameToJamo(emojiName);
+        if (mappedJamo) {
+          tokens.push(...normalizeJamoList([mappedJamo], expandDoubleConsonant, expandCompoundVowel));
+        } else {
+          for (const ch of match[0]) {
+            tokens.push(...charToJamoTokens(ch, expandDoubleConsonant, expandCompoundVowel));
+          }
+        }
+        lastIndex = emojiRegex.lastIndex;
+      }
+
+      if (lastIndex < line.length) {
+        const tail = line.slice(lastIndex).replace(/[ \u3000]+/g, " ");
+        for (const ch of tail) {
+          tokens.push(...charToJamoTokens(ch, expandDoubleConsonant, expandCompoundVowel));
+        }
+      }
+      return tokens;
+    }
 
     function charToJamoTokens(ch, expandDoubleConsonant, expandCompoundVowel) {
       // 에린어 전용 유니코드(U+FFA1 ~ U+FFDC) 문자가 입력된 경우 역변환 지원
@@ -1258,14 +1680,32 @@
       for (const j of jamos) {
         if (expandDoubleConsonant && DOUBLE_CONSONANTS[j]) {
           for (const sub of DOUBLE_CONSONANTS[j]) {
-            result.push({ type: "glyph", jamo: sub, qwerty: JAMO_TO_QWERTY[sub], ffChar: JAMO_TO_FF_CHAR[sub] || "" });
+            result.push({
+              type: "glyph",
+              jamo: sub,
+              qwerty: JAMO_TO_QWERTY[sub],
+              ffChar: JAMO_TO_FF_CHAR[sub] || "",
+              discordCode: JAMO_TO_DISCORD_CODE[sub] || ""
+            });
           }
         } else if (expandCompoundVowel && COMPOUND_VOWELS[j]) {
           for (const sub of COMPOUND_VOWELS[j]) {
-            result.push({ type: "glyph", jamo: sub, qwerty: JAMO_TO_QWERTY[sub], ffChar: JAMO_TO_FF_CHAR[sub] || "" });
+            result.push({
+              type: "glyph",
+              jamo: sub,
+              qwerty: JAMO_TO_QWERTY[sub],
+              ffChar: JAMO_TO_FF_CHAR[sub] || "",
+              discordCode: JAMO_TO_DISCORD_CODE[sub] || ""
+            });
           }
         } else {
-          result.push({ type: "glyph", jamo: j, qwerty: JAMO_TO_QWERTY[j] || "", ffChar: JAMO_TO_FF_CHAR[j] || "" });
+          result.push({
+            type: "glyph",
+            jamo: j,
+            qwerty: JAMO_TO_QWERTY[j] || "",
+            ffChar: JAMO_TO_FF_CHAR[j] || "",
+            discordCode: JAMO_TO_DISCORD_CODE[j] || ""
+          });
         }
       }
       return result;
@@ -1444,6 +1884,7 @@
     }
 
     let currentFontLines = [];
+    let currentDiscordLines = [];
 
     function renderTranslation() {
       const text = inputText.value;
@@ -1462,6 +1903,8 @@
         erinViewport.classList.add("style-monument");
       } else if (style === "webfont") {
         erinViewport.classList.add("style-webfont");
+      } else if (style === "discord_outline" || style === "discord_slate") {
+        erinViewport.classList.add("style-discord");
       } else {
         erinViewport.classList.add("style-black");
       }
@@ -1484,17 +1927,15 @@
       const allQwertyStrings = [];
       const allAssembledLines = [];
       const allFontStrings = [];
+      const allDiscordStrings = [];
 
       for (const line of lines) {
-        const lineTokens = [];
-        for (const ch of line) {
-          const tokens = charToJamoTokens(ch, expandDouble, expandVowel);
-          lineTokens.push(...tokens);
-        }
+        const lineTokens = tokenizeInputLine(line, expandDouble, expandVowel);
 
         const lineJamos = [];
         const lineQwertys = [];
         const lineFontChars = [];
+        const lineDiscordCodes = [];
 
         if (style === "webfont") {
           const wfLine = document.createElement("div");
@@ -1505,17 +1946,21 @@
               lineJamos.push(" ");
               lineQwertys.push(" ");
               lineFontChars.push(" ");
+              lineDiscordCodes.push("　");
             } else if (tok.type === "glyph") {
               const fc = tok.ffChar || JAMO_TO_FF_CHAR[tok.jamo] || tok.jamo;
+              const dc = tok.discordCode || JAMO_TO_DISCORD_CODE[tok.jamo] || "";
               wfLine.textContent += fc;
               lineJamos.push(tok.jamo);
               lineQwertys.push(tok.qwerty);
               lineFontChars.push(fc);
+              lineDiscordCodes.push(dc ? `:${dc}:` : tok.jamo);
             } else {
               wfLine.textContent += tok.char;
               lineJamos.push(tok.char);
               lineQwertys.push(tok.char);
               lineFontChars.push(tok.char);
+              lineDiscordCodes.push(tok.char);
             }
           }
           erinViewport.appendChild(wfLine);
@@ -1531,16 +1976,26 @@
               lineJamos.push(" ");
               lineQwertys.push(" ");
               lineFontChars.push(" ");
+              lineDiscordCodes.push("　");
             } else if (tok.type === "glyph") {
               const wrap = document.createElement("span");
               wrap.className = "glyph-wrap";
 
+              const dc = tok.discordCode || JAMO_TO_DISCORD_CODE[tok.jamo] || "";
               const img = document.createElement("img");
-              img.src = `data/transparent/${encodeURIComponent(tok.jamo)}.png`;
+              if (style === "discord_outline") {
+                img.src = `data/discord_emoji/outline/${dc}.png`;
+                img.className = "glyph-discord";
+              } else if (style === "discord_slate") {
+                img.src = `data/discord_emoji/slate/${dc}.png`;
+                img.className = "glyph-discord";
+              } else {
+                img.src = `data/transparent/${encodeURIComponent(tok.jamo)}.png`;
+                img.className = style === "monument" ? "glyph-monument" : "glyph-black";
+              }
               img.alt = tok.jamo;
               const cpHex = JAMO_TO_FF_CODE[tok.jamo] ? `U+${JAMO_TO_FF_CODE[tok.jamo].toString(16).toUpperCase()}` : "";
-              img.title = `한글: ${tok.jamo} / 영문(두벌식): ${tok.qwerty} / 폰트 코드: ${cpHex}`;
-              img.className = style === "monument" ? "glyph-monument" : "glyph-black";
+              img.title = `한글: ${tok.jamo} / 영문: ${tok.qwerty} / 디스코드: :${dc}: / 폰트: ${cpHex}`;
               wrap.appendChild(img);
 
               if (caption !== "none") {
@@ -1548,6 +2003,7 @@
                 cap.className = "glyph-caption";
                 if (caption === "jamo") cap.textContent = tok.jamo;
                 else if (caption === "qwerty") cap.textContent = tok.qwerty;
+                else if (caption === "discord") cap.textContent = `:${dc}:`;
                 else cap.textContent = `${tok.jamo}(${tok.qwerty})`;
                 wrap.appendChild(cap);
               }
@@ -1556,6 +2012,7 @@
               lineJamos.push(tok.jamo);
               lineQwertys.push(tok.qwerty);
               lineFontChars.push(tok.ffChar || JAMO_TO_FF_CHAR[tok.jamo] || tok.jamo);
+              lineDiscordCodes.push(dc ? `:${dc}:` : tok.jamo);
             } else {
               const unk = document.createElement("span");
               unk.className = "unknown-char";
@@ -1564,6 +2021,7 @@
               lineJamos.push(tok.char);
               lineQwertys.push(tok.char);
               lineFontChars.push(tok.char);
+              lineDiscordCodes.push(tok.char);
             }
           }
 
@@ -1574,17 +2032,160 @@
         allQwertyStrings.push(lineQwertys.join(""));
         allAssembledLines.push(assembleHangulFromJamos(lineTokens));
         allFontStrings.push(lineFontChars.join(""));
+        allDiscordStrings.push(lineDiscordCodes.join(""));
       }
 
       currentFontLines = allFontStrings;
+      currentDiscordLines = allDiscordStrings;
       jamoOutput.textContent = allJamoStrings.join(" / ") || "-";
       qwertyOutput.textContent = allQwertyStrings.join(" / ") || "-";
       assembledOutput.textContent = allAssembledLines.join(" / ") || "-";
       fontCodeOutput.textContent = allFontStrings.join(" / ") || "-";
+      if (discordCodeOutput) {
+        discordCodeOutput.textContent = allDiscordStrings.join("\n") || "-";
+      }
 
       const firstKor = allAssembledLines[0] || "패션 선언";
       const firstFont = allFontStrings[0] || "";
       fontMixedPreview.textContent = `${firstKor} (ㄱㄴㄷ / AMY) → ${firstFont}`;
+
+      renderDiscordSimulator();
+    }
+
+    // ==================== 탭 3: 디스코드 이모지 시뮬레이터 & 팩 관리 ====================
+    const discordPackStyle = document.getElementById("discordPackStyle");
+    const discordPackSet = document.getElementById("discordPackSet");
+    const discordThemeMode = document.getElementById("discordThemeMode");
+    const discordSpaceMode = document.getElementById("discordSpaceMode");
+    const discordSimWrap = document.getElementById("discordSimWrap");
+    const discordChatPreview = document.getElementById("discordChatPreview");
+    const discordShortcodeTextarea = document.getElementById("discordShortcodeTextarea");
+    const discordStatLabel = document.getElementById("discordStatLabel");
+    const discordJumboBadge = document.getElementById("discordJumboBadge");
+    const discordZipDownloadLink = document.getElementById("discordZipDownloadLink");
+    const discordPackSummaryTitle = document.getElementById("discordPackSummaryTitle");
+    const discordPackSummaryDesc = document.getElementById("discordPackSummaryDesc");
+
+    const STYLE_LABELS_KO = {
+      outline: "외곽선 스타일 (다크/라이트 겸용)",
+      slate: "인게임 비석 타일 스타일",
+      white: "순수 화이트 스타일 (다크 모드용)",
+      black: "순수 블랙 스타일 (라이트 모드용)"
+    };
+
+    const SET_DESCRIPTIONS_KO = {
+      "40": "기본자음(14) + 쌍자음(5) + 기본모음(10) + 복합모음(11) = 총 40개 (기본 서버 무료 슬롯 50개 이내)",
+      "31": "기본자음(14) + 쌍자음(5) + 기본모음(10) + 반점모음(ㅒ,ㅖ 2) = 총 31개 (복합모음 9종은 조합 표기로 슬롯 절약)",
+      "26": "기본자음(14) + 기본모음(10) + 반점모음(ㅒ,ㅖ 2) = 총 26개 (쌍자음·복합모음 모두 조합하여 최소 슬롯 사용)"
+    };
+
+    function updateDiscordPackInfo() {
+      if (!discordPackStyle || !discordPackSet) return;
+      const st = discordPackStyle.value;
+      const setKey = discordPackSet.value;
+      const zipFile = `erin_discord_emoji_${st}_${setKey}.zip`;
+      discordZipDownloadLink.href = `data/discord_emoji/${zipFile}`;
+      discordZipDownloadLink.setAttribute("download", zipFile);
+      discordPackSummaryTitle.textContent = `${STYLE_LABELS_KO[st]} · ${setKey}종 이모지 팩 (${zipFile})`;
+      discordPackSummaryDesc.textContent = SET_DESCRIPTIONS_KO[setKey];
+      renderDiscordSimulator();
+      if (panelDiscord.classList.contains("active")) {
+        renderCharTable();
+      }
+    }
+
+    function renderDiscordSimulator() {
+      if (!discordChatPreview || !discordShortcodeTextarea) return;
+      const st = discordPackStyle ? discordPackStyle.value : "outline";
+      const setKey = discordPackSet ? discordPackSet.value : "40";
+      const theme = discordThemeMode ? discordThemeMode.value : "dark";
+      const spaceMode = discordSpaceMode ? discordSpaceMode.value : "ideographic";
+
+      // 세트 구성(40종/31종/26종)에 따른 자동 분해 규칙 적용
+      const expandDouble = setKey === "26" || doubleConsonantMode.value === "double";
+      const expandVowel = setKey === "26" || setKey === "31" || compoundVowelMode.value === "decomposed";
+
+      discordSimWrap.className = `discord-sim-wrap theme-${theme}`;
+
+      const rawLines = inputText.value.split(/\r?\n/);
+      const shortcodeLines = [];
+      let totalEmojis = 0;
+      let hasNonWhitespaceText = false;
+
+      // 먼저 전체 이모지 수 및 일반 텍스트 포함 여부 계산 (디스코드 점보 이모지 조건: 이모지 1~27개 + 공백만 존재)
+      const parsedLines = [];
+      for (const line of rawLines) {
+        const tokens = tokenizeInputLine(line, expandDouble, expandVowel);
+        parsedLines.push(tokens);
+        for (const tok of tokens) {
+          if (tok.type === "glyph") {
+            totalEmojis++;
+          } else if (tok.type !== "space") {
+            hasNonWhitespaceText = true;
+          }
+        }
+      }
+      if (spaceMode === "slash") {
+        hasNonWhitespaceText = true;
+      }
+
+      const isJumbo = totalEmojis > 0 && totalEmojis <= 27 && !hasNonWhitespaceText;
+      if (discordJumboBadge) {
+        discordJumboBadge.textContent = isJumbo
+          ? `점보 이모지 크기 (${totalEmojis}/27개)`
+          : `일반 인라인 이모지 크기 (${totalEmojis}개)`;
+      }
+
+      discordChatPreview.innerHTML = "";
+
+      for (const tokens of parsedLines) {
+        const lineEl = document.createElement("div");
+        lineEl.className = "discord-emoji-line";
+        const lineCodes = [];
+
+        for (const tok of tokens) {
+          if (tok.type === "space") {
+            if (spaceMode === "slash") {
+              const slashSpan = document.createElement("span");
+              slashSpan.textContent = " / ";
+              slashSpan.style.padding = "0 6px";
+              slashSpan.style.opacity = "0.7";
+              lineEl.appendChild(slashSpan);
+              lineCodes.push(" / ");
+            } else {
+              const gap = document.createElement("span");
+              gap.className = "discord-word-gap";
+              lineEl.appendChild(gap);
+              lineCodes.push(spaceMode === "ideographic" ? "　" : "   ");
+            }
+          } else if (tok.type === "glyph") {
+            const dc = tok.discordCode || JAMO_TO_DISCORD_CODE[tok.jamo] || "";
+            const img = document.createElement("img");
+            img.src = `data/discord_emoji/${st}/${dc}.png`;
+            img.alt = `:${dc}:`;
+            img.title = `:${dc}: (${tok.jamo})`;
+            img.className = isJumbo ? "discord-emoji-img" : "discord-emoji-img inline-size";
+            lineEl.appendChild(img);
+            lineCodes.push(`:${dc}:`);
+          } else {
+            const txt = document.createElement("span");
+            txt.textContent = tok.char;
+            lineEl.appendChild(txt);
+            lineCodes.push(tok.char);
+          }
+        }
+
+        discordChatPreview.appendChild(lineEl);
+        shortcodeLines.push(lineCodes.join(""));
+      }
+
+      const fullShortcodeText = shortcodeLines.join("\n");
+      discordShortcodeTextarea.value = fullShortcodeText;
+      if (discordStatLabel) {
+        const charLen = fullShortcodeText.length;
+        const limitWarn = charLen > 2000 ? " ⚠️ 2000자 초과 (줄 나누어 복사 권장)" : "";
+        discordStatLabel.textContent = `이모지 ${totalEmojis}개 · ${charLen} / 2000자${limitWarn}`;
+      }
     }
 
     function buildRenderedCanvas(forceMonument = false) {
@@ -2611,6 +3212,8 @@
     function renderCharTable() {
       const container = document.getElementById("charTableContainer");
       container.innerHTML = "";
+      const isDiscordTab = panelDiscord && panelDiscord.classList.contains("active");
+      const activeEmojiStyle = discordPackStyle ? discordPackStyle.value : "outline";
 
       for (const group of CHAR_GROUPS) {
         const sec = document.createElement("div");
@@ -2628,10 +3231,18 @@
           const card = document.createElement("div");
           card.className = "char-card";
           const cpHex = JAMO_TO_FF_CODE[jamo] ? `U+${JAMO_TO_FF_CODE[jamo].toString(16).toUpperCase()}` : "";
-          card.title = `'${jamo}' (전용 폰트 코드: ${cpHex}) 클릭하여 입력창에 추가`;
+          const dc = JAMO_TO_DISCORD_CODE[jamo] || "";
+          card.title = `'${jamo}' (디스코드: :${dc}: / 폰트 코드: ${cpHex}) 클릭하여 입력창에 추가`;
 
           const img = document.createElement("img");
-          img.src = `data/transparent/${encodeURIComponent(jamo)}.png`;
+          if (isDiscordTab && dc) {
+            img.src = `data/discord_emoji/${activeEmojiStyle}/${dc}.png`;
+            img.style.background = activeEmojiStyle === "black" ? "#f2f3f5" : "#313338";
+            img.style.width = "60px";
+            img.style.height = "60px";
+          } else {
+            img.src = `data/transparent/${encodeURIComponent(jamo)}.png`;
+          }
           img.alt = jamo;
           card.appendChild(img);
 
@@ -2649,8 +3260,16 @@
 
           card.appendChild(labels);
 
+          const discordBadgeEl = document.createElement("div");
+          discordBadgeEl.style.fontSize = "0.68rem";
+          discordBadgeEl.style.color = "#99a5ff";
+          discordBadgeEl.style.fontFamily = "monospace";
+          discordBadgeEl.style.marginTop = "2px";
+          discordBadgeEl.textContent = `:${dc}:`;
+          card.appendChild(discordBadgeEl);
+
           const codeBadge = document.createElement("div");
-          codeBadge.style.fontSize = "0.66rem";
+          codeBadge.style.fontSize = "0.64rem";
           codeBadge.style.color = "var(--text-muted)";
           codeBadge.style.fontFamily = "monospace";
           codeBadge.textContent = `${cpHex} (${JAMO_TO_FF_CHAR[jamo] || ""})`;
@@ -2685,10 +3304,29 @@
       }
     }
 
+    function flashButtonFeedback(btnId, msg = "✅ 복사됨!") {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      const orig = btn.dataset.origText || btn.textContent;
+      btn.dataset.origText = orig;
+      btn.textContent = msg;
+      setTimeout(() => {
+        btn.textContent = orig;
+      }, 1400);
+    }
+
     // ==================== 이벤트 바인딩 ====================
     [inputText, doubleConsonantMode, compoundVowelMode, renderStyle, captionMode, glyphSize, textAlign].forEach(el => {
       el.addEventListener("input", renderTranslation);
       el.addEventListener("change", renderTranslation);
+    });
+
+    [discordPackStyle, discordPackSet].forEach(el => {
+      if (el) el.addEventListener("change", updateDiscordPackInfo);
+    });
+
+    [discordThemeMode, discordSpaceMode].forEach(el => {
+      if (el) el.addEventListener("change", renderDiscordSimulator);
     });
 
     document.getElementById("btnPresetPoem").addEventListener("click", () => {
@@ -2713,6 +3351,33 @@
 
     document.getElementById("btnCopyFontText").addEventListener("click", () => {
       navigator.clipboard.writeText(currentFontLines.join("\n"));
+      flashButtonFeedback("btnCopyFontText");
+    });
+
+    document.getElementById("btnCopyDiscordText").addEventListener("click", () => {
+      navigator.clipboard.writeText(currentDiscordLines.join("\n"));
+      flashButtonFeedback("btnCopyDiscordText");
+    });
+
+    document.getElementById("btnGoDiscordTab").addEventListener("click", () => {
+      switchTab("discord");
+    });
+
+    document.getElementById("btnCopyDiscordFull").addEventListener("click", () => {
+      navigator.clipboard.writeText(discordShortcodeTextarea.value);
+      flashButtonFeedback("btnCopyDiscordFull");
+    });
+
+    document.getElementById("btnCopyDiscordFirstLine").addEventListener("click", () => {
+      const firstLine = (discordShortcodeTextarea.value.split(/\r?\n/)[0] || "").trim();
+      navigator.clipboard.writeText(firstLine);
+      flashButtonFeedback("btnCopyDiscordFirstLine");
+    });
+
+    document.getElementById("btnTestReverseDecode").addEventListener("click", () => {
+      inputText.value = ":erin_v::erin_o::erin_t::erin_u::erin_s:　:erin_t::erin_j::erin_s::erin_d::erin_j::erin_s:\n<:erin_d:1234567890><:erin_p:1234567890><:erin_f:1234567890><:erin_l:1234567890><:erin_s:1234567890>";
+      renderTranslation();
+      switchTab("text");
     });
 
     document.getElementById("btnDownloadPng").addEventListener("click", downloadAsPng);
@@ -2795,13 +3460,16 @@
 
     document.getElementById("btnCopyKor").addEventListener("click", () => {
       navigator.clipboard.writeText(document.getElementById("ocrKorOutput").textContent);
+      flashButtonFeedback("btnCopyKor");
     });
 
     document.getElementById("btnCopyEng").addEventListener("click", () => {
       navigator.clipboard.writeText(document.getElementById("ocrEngOutput").textContent);
+      flashButtonFeedback("btnCopyEng");
     });
 
     initOcrTemplates();
+    updateDiscordPackInfo();
     renderCharTable();
     inputText.value = SAMPLE_POEM;
     renderTranslation();

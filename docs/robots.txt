@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ernest6164.github.io/erin-lang-trans/sitemap.xml

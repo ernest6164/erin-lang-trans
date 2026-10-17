@@ -3,7 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>마비노기 한국어/영어 ↔ 에린어 번역기</title>
+
+  <!-- Primary SEO Meta Tags -->
+  <title>마비노기 한국어/영어 ↔ 에린어 번역기 & OCR 해독기 | ErinLang</title>
+  <meta name="title" content="마비노기 한국어/영어 ↔ 에린어 번역기 & OCR 해독기 | ErinLang" />
+  <meta name="description" content="마비노기 세계관의 에린어(Erin Language)와 한국어/영어를 실시간으로 상호 변환하는 번역기. 스크린샷 이미지 OCR 자동 해독, 에린어 전용 폰트(ErinLang · U+FFA1~U+FFDC), 디스코드 커스텀 이모지 팩 제공." />
+  <meta name="keywords" content="마비노기, 마비노기 모바일, 에린어, 에린어 번역기, 에린어 번역, 에린어 해독, 에린 문자, 에린어 읽는 법, 에린어 폰트, 마비노기 비석, Mabinogi, Erin Language, 디스코드 에린어 이모지, 에린어 OCR" />
+  <meta name="author" content="ernest6164" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://ernest6164.github.io/erin-lang-trans/" />
+
+  <!-- Open Graph / Facebook / Discord / KakaoTalk -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ernest6164.github.io/erin-lang-trans/" />
+  <meta property="og:site_name" content="마비노기 에린어 번역기" />
+  <meta property="og:title" content="마비노기 한국어/영어 ↔ 에린어 번역기 & OCR 해독기" />
+  <meta property="og:description" content="한국어·영어 ↔ 에린어 실시간 상호 번역, 스크린샷 OCR 이미지 해독, 전용 폰트(ErinLang), 디스코드 커스텀 이모지 팩 무료 제공" />
+  <meta property="og:image" content="https://ernest6164.github.io/erin-lang-trans/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="마비노기 한국어/영어 ↔ 에린어 번역기 배너" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://ernest6164.github.io/erin-lang-trans/" />
+  <meta name="twitter:title" content="마비노기 한국어/영어 ↔ 에린어 번역기 & OCR 해독기" />
+  <meta name="twitter:description" content="한국어·영어 ↔ 에린어 실시간 상호 번역, 스크린샷 OCR 이미지 해독, 전용 폰트(ErinLang), 디스코드 커스텀 이모지 팩 무료 제공" />
+  <meta name="twitter:image" content="https://ernest6164.github.io/erin-lang-trans/og-image.png" />
+
+  <!-- 검색 포털 사이트 소유권 확인 태그 -->
+  <meta name="google-site-verification" content="hLTvTvHH5fQw2PTgSXLeky7-Sv3A52xS7eljqd30fPw" />
+
+  <!-- Structured Data (Schema.org JSON-LD for WebApplication & FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://ernest6164.github.io/erin-lang-trans/#app",
+        "name": "마비노기 한국어/영어 ↔ 에린어 번역기",
+        "url": "https://ernest6164.github.io/erin-lang-trans/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas.",
+        "description": "마비노기 세계관의 에린어(Erin Language)와 한국어/영어를 상호 변환하고, 게임 내 스크린샷 비석 문구를 OCR로 해독하는 무료 웹 도구",
+        "inLanguage": ["ko-KR", "en-US"],
+        "author": {
+          "@type": "Person",
+          "name": "ernest6164",
+          "url": "https://github.com/ernest6164/erin-lang-trans"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ernest6164.github.io/erin-lang-trans/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "마비노기 에린어(Erin Language)란 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "에린어는 넥슨 마비노기 시리즈(마비노기 모바일 등) 세계관의 고유 문자로, 한글의 모아쓰기 대신 자음과 모음을 왼쪽에서 오른쪽으로 일렬로 풀어쓰는 체계를 가지고 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "에린어에서 'ㅐ'와 'ㅔ'는 어떻게 구분하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "에린어에서 'ㅐ'는 직관적으로 'ㅏ + ㅣ'로 만들지만, 'ㅔ'는 'ㅓ + ㅣ'가 아니라 'ㅣ + ㅏ' 순서로 결합하는 독특한 에린어 고유 맞춤법을 따릅니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "에린어 'ㅒ'와 'ㅖ'의 반점(Tick) 표기는 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "자음 된소리(ㄲ, ㄸ, ㅃ, ㅆ, ㅉ)를 단자음 오른쪽 위에 반점을 찍어 표기하듯이, 'ㅒ'와 'ㅖ' 역시 각각 'ㅐ'와 'ㅔ'의 오른쪽 위에 반점(Tick)을 찍어 표기합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "영어 알파벳은 에린어와 어떻게 대응되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "영어 알파벳은 한국어 두벌식(QWERTY) 키보드 자판의 각 위치에 대응하는 한글 자모(r=ㄱ, k=ㅏ, o=ㅐ, v=ㅍ 등)를 통해 에린어와 1:1로 변환됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "에린어 전용 폰트(ErinLang)는 어디에 사용하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "전용 폰트 ErinLang은 유니코드 U+FFA1~U+FFDC 영역의 한글 자모를 에린어 벡터 글리프로 렌더링하도록 제작되어, 일반 한글이나 영문 텍스트와 충돌 없이 한 문서 내에서 에린어를 함께 타이핑할 수 있습니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <script src="data/ocr_templates.js"></script>
   <style>
     @font-face {
@@ -1493,6 +1600,107 @@
 
       <div id="charTableContainer"></div>
     </div>
+
+    <!-- ==================== 검색 엔진 최적화(SEO) 및 봇 색인을 위한 마비노기 에린어 완벽 가이드 & FAQ ==================== -->
+    <section class="card" id="seoGuideSection" style="margin-top: 24px;">
+      <div class="card-header" style="border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 16px;">
+        <div class="card-title" style="font-size: 1.15rem;">
+          📖 마비노기 에린어(Erin Language) 완벽 해설 & 사용 가이드
+        </div>
+        <span style="font-size: 0.82rem; color: var(--text-muted);">
+          에린어 문자 체계의 원리, 고유 맞춤법, 폰트 및 디스코드 활용 안내
+        </span>
+      </div>
+
+      <div style="font-size: 0.93rem; line-height: 1.7; color: var(--text-main); display: flex; flex-direction: column; gap: 18px;">
+        <article>
+          <h3 style="color: var(--accent); font-size: 1.05rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+            <span>1.</span> 마비노기 에린어(Erin Language)란?
+          </h3>
+          <p style="color: #d7e0ea;">
+            <strong>에린어</strong>는 넥슨(NEXON)의 대표 MMORPG <strong>마비노기</strong> 및 <strong>마비노기 모바일</strong> 세계관에 등장하는 고대 고유 문자입니다.
+            던바튼, 티르 코네일, 반호르 등 인게임 곳곳의 고대 유적지, 비석, 마을 간판, 도서관 장서, '패션 선언' 비문 등에 광범위하게 새겨져 있습니다.
+            시각적으로는 켈트 오검 문자나 신비로운 룬 문자처럼 보이지만, 실제로는 <strong>한국어 자모(초성·중성·종성) 및 영문 두벌식(QWERTY) 키보드와 1:1로 정확히 대응하는 정교한 문자 체계</strong>입니다.
+          </p>
+        </article>
+
+        <article>
+          <h3 style="color: var(--accent); font-size: 1.05rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+            <span>2.</span> 에린어의 핵심 해독 원리 (풀어쓰기와 대칭성)
+          </h3>
+          <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: #d7e0ea;">
+            <li>
+              <strong>선형 풀어쓰기 (Linear Decomposition)</strong>: 일반 한글의 모아쓰기(초성+중성+종성) 대신 모든 자음과 모음을 <strong>왼쪽에서 오른쪽으로 일렬로 나열</strong>합니다. (예: <code>패션 선언</code> → <code>ㅍ ㅐ ㅅ ㅕ ㄴ  ㅅ ㅓ ㄴ ㅇ ㅓ ㄴ</code>)
+            </li>
+            <li>
+              <strong>겹받침 단자음 분해</strong>: <code>ㄳ, ㄵ, ㄶ, ㄺ, ㄻ, ㄼ, ㄽ, ㄾ, ㄿ, ㅀ, ㅄ</code> 등 11개 겹받침은 두 개의 단자음으로 분리하여 순서대로 배치합니다. (예: <code>않는다</code> → <code>ㅇ ㅏ ㄴ ㅎ ㄴ ㅡ ㄴ ㄷ ㅏ</code>)
+            </li>
+            <li>
+              <strong>기본 모음의 대칭 구조</strong>: 에린어 기본 모음은 상하/좌우 대칭 구조를 이룹니다.
+              <code>ㅏ</code> ↔ <code>ㅓ</code> (좌우 대칭), <code>ㅗ</code> ↔ <code>ㅜ</code> (상하 대칭), <code>ㅑ</code> ↔ <code>ㅕ</code> (좌우 대칭), <code>ㅛ</code> ↔ <code>ㅠ</code> (상하 대칭), <code>ㅡ</code>/<code>ㅣ</code> (독립 기본 모음).
+            </li>
+            <li>
+              <strong>영어 두벌식(QWERTY) 자판 매핑</strong>: 알파벳 키보드의 위치에 대응하는 한글 자모로 1:1 변환됩니다.
+              자음(<code>r</code>=ㄱ, <code>s</code>=ㄴ, <code>e</code>=ㄷ, <code>f</code>=ㄹ, <code>a</code>=ㅁ, <code>q</code>=ㅂ, <code>t</code>=ㅅ, <code>d</code>=ㅇ, <code>w</code>=ㅈ, <code>v</code>=ㅍ 등), 모음(<code>k</code>=ㅏ, <code>o</code>=ㅐ, <code>j</code>=ㅓ, <code>p</code>=ㅔ 등).
+            </li>
+          </ul>
+        </article>
+
+        <article>
+          <h3 style="color: var(--gold); font-size: 1.05rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+            <span>3.</span> 에린어 고유 맞춤법 핵심 주의사항 (ㅐ vs ㅔ, ㅒ vs ㅖ)
+          </h3>
+          <p style="color: #d7e0ea; margin-bottom: 8px;">
+            에린어 해독 시 많은 이용자분들이 가장 혼동하기 쉬운 고유 맞춤법입니다:
+          </p>
+          <div style="background: rgba(224, 175, 104, 0.08); border-left: 3px solid var(--gold); padding: 10px 14px; border-radius: 4px; display: flex; flex-direction: column; gap: 8px;">
+            <div>
+              <strong style="color: var(--gold);">ㅐ (ㅏ + ㅣ) vs ㅔ (ㅣ + ㅏ) :</strong><br />
+              직관적으로 <code>ㅏ + ㅣ</code>로 만드는 <strong>ㅐ</strong>와 달리, <strong>ㅔ는 <code>ㅓ + ㅣ</code>가 아니라 <code>ㅣ + ㅏ</code> 순서</strong>로 만듭니다. (이에 따라 <code>ㅞ</code> 역시 <code>ㅜ + ㅔ</code> = <code>ㅜ + ㅣ + ㅏ</code>로 구성됩니다.)
+            </div>
+            <div>
+              <strong style="color: var(--gold);">ㅒ와 ㅖ의 된소리 반점(Tick) 표기 :</strong><br />
+              자음 된소리(<code>ㄲ, ㄸ, ㅃ, ㅆ, ㅉ</code>)를 표기할 때처럼, <strong>ㅒ</strong>와 <strong>ㅖ</strong>도 각각 <strong>ㅐ</strong>와 <strong>ㅔ</strong>의 <strong>오른쪽 위에 반점(Tick)</strong>을 찍어 표현합니다.
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <h3 style="color: var(--green); font-size: 1.05rem; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <span>4.</span> 자주 묻는 질문 (FAQ)
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <details style="background: #141824; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;">
+              <summary style="font-weight: 700; cursor: pointer; color: var(--accent);">Q. 인게임 스크린샷의 에린어 비문은 어떻게 번역하나요?</summary>
+              <div style="margin-top: 8px; color: #c4d0df; line-height: 1.6;">
+                상단의 <strong>📷 스크린샷 해독 (OCR)</strong> 탭에서 스크린샷을 업로드(또는 <code>Ctrl+V</code> 붙여넣기)한 후, 모서리 4개 점을 에린어 비문 영역에 맞추고 <strong>🔍 선택 영역 에린어 해독 실행</strong>을 누르면 컴퓨터 비전 매칭을 통해 한국어 모아쓰기와 영문으로 즉시 해독됩니다. 인식률이 낮을 경우 글자 칩을 클릭하여 후보 글자로 수동 교정할 수도 있습니다.
+              </div>
+            </details>
+            <details style="background: #141824; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;">
+              <summary style="font-weight: 700; cursor: pointer; color: var(--accent);">Q. 에린어 전용 폰트(ErinLang.ttf / .woff2)는 어떻게 활용하나요?</summary>
+              <div style="margin-top: 8px; color: #c4d0df; line-height: 1.6;">
+                본 번역기에서 제공하는 <strong>ErinLang</strong> 폰트는 일반 한글(<code>U+AC00~U+D7A3</code>)과 영문(<code>A-Z</code>)을 그대로 보존하고, 유니코드 전각 영역(<code>U+FFA1~U+FFDC</code>)에만 에린어 벡터 글리프를 매핑했습니다. 따라서 워드, 포토샵, 웹사이트 등에서 일반 한글 텍스트와 에린어를 한 줄 안에 깨짐 없이 동시에 타이핑할 수 있습니다.
+              </div>
+            </details>
+            <details style="background: #141824; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;">
+              <summary style="font-weight: 700; cursor: pointer; color: var(--accent);">Q. 디스코드 커스텀 이모지 팩은 어떻게 서버에 등록하나요?</summary>
+              <div style="margin-top: 8px; color: #c4d0df; line-height: 1.6;">
+                <strong>💬 디스코드 이모지</strong> 탭에서 서버 무료 슬롯 개수에 맞는 ZIP 압축 파일(40종 / 31종 / 26종)을 다운로드받아 압축을 푼 뒤, 디스코드 <strong>서버 설정 → 이모지 → 이모지 업로드</strong>에서 <code>Ctrl+A</code>(전체 선택)로 일괄 업로드하시면 됩니다. 파일명이 <code>erin_r.png</code>(ㄱ)처럼 단축코드로 일치되어 있어 이름 수정 없이 즉시 <code>:erin_*:</code> 코드로 사용 가능합니다.
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 하단 공통 푸터 -->
+    <footer style="text-align: center; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.83rem; color: var(--text-muted);">
+      <p style="font-weight: 600; color: #c4d0df;">마비노기 한국어 / 영어 ↔ 에린어 번역기 · OCR 해독기 · 오픈소스 프로젝트</p>
+      <p style="margin-top: 6px;">
+        GitHub: <a href="https://github.com/ernest6164/erin-lang-trans" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">ernest6164/erin-lang-trans</a>
+        · 에린어 문자 체계 및 원작 저작권은 ㈜넥슨코리아(NEXON) 마비노기에 있습니다.
+      </p>
+    </footer>
   </div>
 
   <script>

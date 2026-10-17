@@ -1,0 +1,2810 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마비노기 한국어/영어 ↔ 에린어 번역기</title>
+  <script src="data/ocr_templates.js"></script>
+  <style>
+    @font-face {
+      font-family: "ErinLang";
+      src: url("data/ErinLang.woff2") format("woff2"),
+           url("data/ErinLang.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-dark: #151924;
+      --bg-card: #1f2536;
+      --bg-monument: #384f6b;
+      --bg-monument-inner: #405875;
+      --bg-tile: #464b60;
+      --border: #323c54;
+      --accent: #7aa2f7;
+      --accent-hover: #8fb4ff;
+      --gold: #e0af68;
+      --green: #73daca;
+      --text-main: #eef2ff;
+      --text-muted: #9aa5ce;
+      --glyph-height: 44px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: radial-gradient(circle at top, #1f283d 0%, var(--bg-dark) 70%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding: 24px 18px 60px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .badge-top {
+      display: inline-block;
+      background: rgba(122, 162, 247, 0.15);
+      border: 1px solid rgba(122, 162, 247, 0.4);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    /* 상단 모드 탭 */
+    .mode-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .tab-btn {
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 11px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #1b2030;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #101521;
+      border-color: var(--accent);
+      box-shadow: 0 4px 18px rgba(122, 162, 247, 0.35);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .grid-main {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .preset-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #283046;
+      color: var(--text-main);
+      padding: 6px 11px;
+      transition: all 0.15s ease;
+    }
+
+    button:hover {
+      background: #333e5a;
+      border-color: var(--accent);
+    }
+
+    button.primary {
+      background: var(--accent);
+      color: #111622;
+      border-color: var(--accent);
+    }
+
+    button.primary:hover {
+      background: var(--accent-hover);
+    }
+
+    button.gold {
+      background: rgba(224, 175, 104, 0.18);
+      color: var(--gold);
+      border-color: rgba(224, 175, 104, 0.5);
+    }
+
+    button.gold:hover {
+      background: rgba(224, 175, 104, 0.28);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 170px;
+      background: #141824;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 1.02rem;
+      line-height: 1.6;
+      padding: 14px;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .options-box {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 520px) {
+      .options-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .opt-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .opt-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    select, input[type="range"] {
+      background: #141824;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .breakdown-box {
+      margin-top: 14px;
+      background: #141824;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.85rem;
+    }
+
+    .breakdown-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 6px;
+      align-items: baseline;
+    }
+
+    .breakdown-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .breakdown-tag {
+      color: var(--gold);
+      font-weight: 700;
+      min-width: 96px;
+      flex-shrink: 0;
+    }
+
+    .breakdown-val {
+      color: var(--text-main);
+      word-break: break-all;
+      font-family: "Consolas", "Courier New", monospace;
+    }
+
+    /* 에린어 맞춤법 안내 배너 */
+    .orthography-banner {
+      background: linear-gradient(135deg, rgba(122, 162, 247, 0.1) 0%, rgba(224, 175, 104, 0.1) 100%);
+      border: 1px solid rgba(224, 175, 104, 0.4);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .ortho-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(20, 24, 36, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .ortho-imgs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .ortho-imgs img {
+      width: 44px;
+      height: 38px;
+      border-radius: 5px;
+      border: 1px solid #45506b;
+      background: #eef2fa;
+      padding: 3px;
+      object-fit: contain;
+    }
+
+    .ortho-desc {
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .ortho-desc strong {
+      color: var(--gold);
+    }
+
+    /* 에린어 렌더링 영역 */
+    .erin-viewport {
+      min-height: 290px;
+      border-radius: 12px;
+      padding: 24px 20px;
+      overflow-x: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+
+    .erin-viewport.style-monument {
+      background: linear-gradient(160deg, #324a63 0%, #3d5875 50%, #2c4259 100%);
+      border: 2px solid #527091;
+      box-shadow: inset 0 0 36px rgba(12, 22, 34, 0.55);
+    }
+
+    .erin-viewport.style-black {
+      background: #f4f6fb;
+      border: 2px solid #c5cee0;
+      color: #000000;
+    }
+
+    .erin-viewport.style-webfont {
+      background: #f4f6fb;
+      border: 2px solid var(--accent);
+      color: #000000;
+    }
+
+    .erin-viewport.align-center {
+      align-items: center;
+    }
+
+    .erin-viewport.align-left {
+      align-items: flex-start;
+    }
+
+    .erin-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px;
+      min-height: var(--glyph-height);
+    }
+
+    .erin-webfont-line {
+      font-family: "ErinLang", "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+      font-size: var(--glyph-height);
+      line-height: 1.35;
+      color: #000000;
+      letter-spacing: 0.02em;
+      user-select: text;
+    }
+
+    .align-center .erin-line,
+    .align-center .erin-webfont-line {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .highlight-first-line .erin-line:first-child .glyph-monument {
+      filter: opacity(0.78) drop-shadow(0 1px 1px rgba(255, 255, 255, 0.15));
+      margin-bottom: 6px;
+    }
+
+    .erin-space {
+      display: inline-block;
+      width: calc(var(--glyph-height) * 0.48);
+      height: var(--glyph-height);
+    }
+
+    .glyph-wrap {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* 원본 PNG가 투명 배경 + 검은색(#000000) 글리프이므로 벽면 스타일에서는 invert(1)로 밝게 표시 */
+    .glyph-monument {
+      height: var(--glyph-height);
+      width: auto;
+      object-fit: contain;
+      filter: invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)) opacity(0.9);
+      user-select: none;
+    }
+
+    /* 투명 배경 + 검은색(#000000) 원본 이미지 그대로 표시 */
+    .glyph-black {
+      height: var(--glyph-height);
+      width: auto;
+      object-fit: contain;
+      user-select: none;
+    }
+
+    .glyph-caption {
+      font-size: 0.7rem;
+      color: #4a5578;
+      margin-top: 2px;
+      font-family: monospace;
+    }
+
+    .style-monument .glyph-caption {
+      color: rgba(238, 242, 255, 0.75);
+    }
+
+    .unknown-char {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--glyph-height);
+      padding: 0 6px;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: calc(var(--glyph-height) * 0.5);
+    }
+
+    /* OCR 탭 스타일 */
+    .ocr-canvas-wrap {
+      position: relative;
+      background: #10141f;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 280px;
+    }
+
+    .ocr-canvas-wrap canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .ocr-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .ocr-result-box {
+      background: #141824;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 14px;
+    }
+
+    .ocr-result-title {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ocr-kor-lines {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: pre-wrap;
+      line-height: 1.65;
+      padding: 6px 2px;
+    }
+
+    .ocr-eng-lines {
+      font-size: 0.9rem;
+      color: var(--green);
+      font-family: "Consolas", "Courier New", monospace;
+      white-space: pre-wrap;
+      line-height: 1.55;
+    }
+
+    .ocr-chips-container {
+      margin-top: 12px;
+      background: #141824;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .ocr-chip-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed rgba(154, 165, 206, 0.15);
+    }
+
+    .ocr-chip-line:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .line-badge {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      min-width: 38px;
+      font-weight: 600;
+    }
+
+    .jamo-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 26px;
+      height: 26px;
+      padding: 0 5px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: #232b40;
+      border: 1px solid #3b4668;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+
+    .jamo-chip:hover, .jamo-chip.selected {
+      background: var(--accent);
+      color: #101521;
+      border-color: var(--accent);
+    }
+
+    .jamo-chip.low-conf {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .chip-space {
+      display: inline-block;
+      width: 12px;
+    }
+
+    .inspector-panel {
+      margin-top: 12px;
+      background: #192030;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 12px;
+      display: none;
+    }
+
+    .inspector-panel.active {
+      display: block;
+    }
+
+    .inspector-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .cand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 7px;
+      background: #26304a;
+      border: 1px solid var(--border);
+      font-size: 0.84rem;
+    }
+
+    .cand-btn.active {
+      background: var(--accent);
+      color: #111622;
+      border-color: var(--accent);
+    }
+
+    /* 하단 에린어 문자 도감 */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .char-category {
+      margin-bottom: 18px;
+    }
+
+    .char-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .cat-header {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+      gap: 8px;
+    }
+
+    .char-card {
+      background: #161b28;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.12s, border-color 0.12s;
+    }
+
+    .char-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: #1d2436;
+    }
+
+    .char-card img {
+      width: 64px;
+      height: 55px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      border: 1px solid #384057;
+      background: #eef2fa;
+      padding: 4px;
+      object-fit: contain;
+    }
+
+    .char-card-labels {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .char-key {
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: rgba(122, 162, 247, 0.14);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .sym-badge {
+      font-size: 0.66rem;
+      color: var(--gold);
+      margin-top: 2px;
+      text-align: center;
+    }
+
+    .font-demo-box {
+      margin-top: 12px;
+      background: #141824;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.83rem;
+      display: none;
+    }
+
+    .font-demo-preview {
+      margin-top: 6px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f4f6fb;
+      color: #000000;
+      font-family: "ErinLang", "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      word-break: break-all;
+    }
+
+    .beta-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(224, 175, 104, 0.22);
+      color: var(--gold);
+      border: 1px solid rgba(224, 175, 104, 0.55);
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    .tab-btn.active .beta-badge {
+      background: #101521;
+      color: var(--gold);
+      border-color: #101521;
+    }
+
+    .beta-notice {
+      background: rgba(224, 175, 104, 0.12);
+      border: 1px solid rgba(224, 175, 104, 0.45);
+      color: var(--text-main);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .beta-notice strong {
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge-top">Mabinogi Erin Language Translator · OCR · Dedicated Font</span>
+      <h1>한국어 / 영어 ↔ 에린어 양방향 번역기</h1>
+      <p class="subtitle">텍스트를 에린어 이미지·전용 폰트(`U+FFA1~U+FFDC`)로 변환하거나, 인게임 스크린샷에서 에린어를 추출해 한국어·영어로 해독합니다.</p>
+    </header>
+
+    <!-- 상단 탭 네비게이션 -->
+    <div class="mode-tabs">
+      <button type="button" class="tab-btn active" id="tabBtnText">✍️ 한국어/영어 → 에린어 번역 & 폰트</button>
+      <button type="button" class="tab-btn" id="tabBtnOcr">📷 스크린샷 → 한국어/영어 해독 (OCR) <span class="beta-badge">Beta</span></button>
+    </div>
+
+    <!-- ==================== 탭 1: 텍스트 -> 에린어 번역 ==================== -->
+    <div id="panelText" class="tab-panel active">
+      <div class="grid-main">
+        <!-- 좌측: 입력 및 변환 설정 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">✍️ 원문 입력 (한국어 / 영어 / 에린어 유니코드)</div>
+            <div class="preset-group">
+              <button type="button" id="btnPresetPoem" class="primary">인게임 샘플 (패션 선언)</button>
+              <button type="button" id="btnPresetOrtho">맞춤법 예시 (ㅐ·ㅔ·ㅒ·ㅖ)</button>
+              <button type="button" id="btnPresetEng">영어 예시 (AMY)</button>
+              <button type="button" id="btnClear">초기화</button>
+            </div>
+          </div>
+
+          <textarea id="inputText" placeholder="한국어 또는 영어를 입력하세요...&#10;예: 패션 선언&#10;예: AMY / qlqjq didsua"></textarea>
+
+          <div class="options-box">
+            <div class="opt-item">
+              <label class="opt-label" for="doubleConsonantMode">쌍자음(ㄲ,ㄸ,ㅃ,ㅆ,ㅉ) 표기</label>
+              <select id="doubleConsonantMode">
+                <option value="single" selected>변환표 된소리 반점 기호 (ㄲ) [인게임 표준]</option>
+                <option value="double">단자음 2개 연속 배치 (ㄱ+ㄱ)</option>
+              </select>
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="compoundVowelMode">복합모음(ㅐ=ㅏ+ㅣ, ㅔ=ㅣ+ㅏ 등) 표기</label>
+              <select id="compoundVowelMode">
+                <option value="combined" selected>변환표 복합모음 타일 사용</option>
+                <option value="decomposed">에린어 맞춤법 분리 배치 (ㅔ→ㅣ+ㅏ 등)</option>
+              </select>
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="renderStyle">렌더링 스타일</label>
+              <select id="renderStyle">
+                <option value="monument" selected>"패션 선언" 스타일 (투명 PNG 반전)</option>
+                <option value="black">검은색(#000000) 투명 PNG 원본</option>
+                <option value="webfont">전용 웹폰트(ErinLang · U+FFA1~U+FFDC 텍스트)</option>
+              </select>
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="captionMode">문자 하단 가이드 라벨</label>
+              <select id="captionMode">
+                <option value="none" selected>숨기기 (순수 에린어만 표시)</option>
+                <option value="jamo">한글 자모 표시 (ㅍ, ㅐ...)</option>
+                <option value="qwerty">영문 쿼티 표시 (v, o...)</option>
+                <option value="both">한글 + 영문 동시 표시</option>
+              </select>
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="glyphSize">에린어 글자 크기 (<span id="glyphSizeLabel">42px</span>)</label>
+              <input type="range" id="glyphSize" min="24" max="76" value="42" />
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="textAlign">문단 정렬</label>
+              <select id="textAlign">
+                <option value="center" selected>가운데 정렬</option>
+                <option value="left">왼쪽 정렬</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="breakdown-box">
+            <div class="breakdown-row">
+              <span class="breakdown-tag">풀어쓰기 자모</span>
+              <span class="breakdown-val" id="jamoOutput">-</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-tag">대응 영문(쿼티)</span>
+              <span class="breakdown-val" id="qwertyOutput">-</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-tag">한글 모아쓰기</span>
+              <span class="breakdown-val" id="assembledOutput">-</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-tag">폰트 전용 코드</span>
+              <span class="breakdown-val" id="fontCodeOutput">-</span>
+              <button type="button" id="btnCopyFontText" style="margin-left: auto; flex-shrink: 0;">📋 폰트 문자 복사</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 에린어 출력 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🏛️ 에린어 번역 결과</div>
+            <div class="preset-group">
+              <a href="data/ErinLang.ttf" download="ErinLang.ttf" style="text-decoration: none;"><button type="button">🔤 폰트(.ttf)</button></a>
+              <a href="data/ErinLang.woff2" download="ErinLang.woff2" style="text-decoration: none;"><button type="button">🔤 웹폰트(.woff2)</button></a>
+              <button type="button" id="btnSendRenderToOcr" class="gold">📷 OCR 탭에서 해독 테스트</button>
+              <button type="button" id="btnDownloadPng" class="primary">💾 이미지(PNG) 저장</button>
+            </div>
+          </div>
+
+          <div id="erinViewport" class="erin-viewport style-monument align-center"></div>
+
+          <div class="font-demo-box" id="fontDemoBox">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+              <strong style="color: var(--accent);">🔤 에린어 전용 폰트(`ErinLang`) 실시간 혼합 렌더링</strong>
+              <span style="color: var(--text-muted); font-size: 0.76rem;">일반 한글·단순 자모(`U+3131~`)·영문자는 유지되고 `U+FFA1~U+FFDC`만 에린어로 표시됩니다</span>
+            </div>
+            <div class="font-demo-preview" id="fontMixedPreview"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 탭 2: 스크린샷 -> 한국어/영어 해독 (OCR) ==================== -->
+    <div id="panelOcr" class="tab-panel">
+      <div class="beta-notice">
+        ⚠️ <strong>실험적 기능 (Beta) 안내</strong> — 스크린샷 에린어 해독(OCR)은 현재 <strong>Beta(실험적 기능)</strong>입니다. 인게임 배경 조명·무늬·기울기·해상도 등에 따라 인식이 잘 동작하지 않거나 일부 글자가 오인식될 수 있으니, 우측의 글자 칩을 클릭해 수동 교정 기능을 함께 활용해 주세요.
+      </div>
+      <div class="grid-main">
+        <!-- 좌측: 원본 스크린샷 및 4점 원근 영역 지정 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🖼️ 1. 스크린샷 업로드 & 에린어 영역 지정</div>
+            <div class="preset-group">
+              <button type="button" id="btnLoadTargetSample" class="primary">인게임 샘플 (sample/ 패션 선언) 불러오기</button>
+              <button type="button" id="btnUploadTrigger">📂 파일 선택</button>
+              <button type="button" id="btnResetQuad">📐 전체 영역</button>
+              <input type="file" id="ocrFileInput" accept="image/*" style="display: none;" />
+            </div>
+          </div>
+
+          <div class="ocr-canvas-wrap">
+            <canvas id="ocrSrcCanvas" width="720" height="420"></canvas>
+          </div>
+
+          <div class="ocr-hint">
+            <span>💡 <strong>1(좌상)·2(우상)·3(우하)·4(좌하)</strong> 꼭짓점을 드래그해 에린어 문구 영역의 기울기를 맞춰주세요.</span>
+            <span>클립보드 붙여넣기(<strong>Ctrl+V</strong>) 지원</span>
+          </div>
+
+          <div class="options-box">
+            <div class="opt-item">
+              <label class="opt-label" for="ocrThreshold">이진화 민감도 (<span id="ocrThreshLabel">0.40</span>)</label>
+              <input type="range" id="ocrThreshold" min="0.24" max="0.58" step="0.02" value="0.40" />
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="ocrTitleMirror">음각 제목 줄 좌우대칭 모음 보정</label>
+              <select id="ocrTitleMirror">
+                <option value="auto" selected>자동 보정 (ㅏ↔ㅓ, ㅐ↔ㅔ, ㅑ↔ㅕ)</option>
+                <option value="raw">보정 안 함 (원본 글리프 그대로)</option>
+              </select>
+            </div>
+
+            <div class="opt-item">
+              <label class="opt-label" for="ocrPreviewMode">우측 상단 분석 화면 표시</label>
+              <select id="ocrPreviewMode">
+                <option value="binary" selected>이진화 + 글자 분할 박스 보기</option>
+                <option value="warped">원근 보정된 원본 이미지 보기</option>
+              </select>
+            </div>
+
+            <div class="opt-item" style="justify-content: flex-end;">
+              <button type="button" id="btnRunOcr" class="primary" style="height: 36px; font-size: 0.9rem;">
+                🔍 선택 영역 에린어 해독 실행
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 원근 보정/분할 미리보기 및 한국어/영어 번역 결과 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🔎 2. 글자 분할 분석 & 한국어/영어 해독 결과</div>
+            <div class="preset-group">
+              <button type="button" id="btnSendOcrToText" class="gold">✍️ 번역 결과를 텍스트 탭으로 보내기</button>
+            </div>
+          </div>
+
+          <div class="ocr-canvas-wrap" style="min-height: 220px; max-height: 310px;">
+            <canvas id="ocrProcCanvas" width="656" height="566"></canvas>
+          </div>
+
+          <!-- 개별 인식 자모 칩 (클릭하여 Top-5 후보 확인 및 수동 교정 가능) -->
+          <div class="ocr-chips-container" id="ocrChipsContainer"></div>
+
+          <!-- 글자 클릭 시 열리는 후보 교정 패널 -->
+          <div class="inspector-panel" id="inspectorPanel">
+            <div class="inspector-top">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent);" id="inspectorTitle">선택한 글자 교정</span>
+              <div id="inspectorCandidates" class="preset-group"></div>
+              <button type="button" id="btnCloseInspector" style="margin-left: auto;">닫기</button>
+            </div>
+          </div>
+
+          <!-- 최종 한국어 & 영어 번역 출력 -->
+          <div class="ocr-result-box">
+            <div class="ocr-result-title">
+              <span>🇰🇷 한국어 번역 (한글 모아쓰기)</span>
+              <button type="button" id="btnCopyKor">📋 한국어 복사</button>
+            </div>
+            <div class="ocr-kor-lines" id="ocrKorOutput">-</div>
+          </div>
+
+          <div class="ocr-result-box" style="margin-top: 10px;">
+            <div class="ocr-result-title">
+              <span>🇺🇸 영어 변환 (두벌식 키보드 자판 대응)</span>
+              <button type="button" id="btnCopyEng">📋 영문 복사</button>
+            </div>
+            <div class="ocr-eng-lines" id="ocrEngOutput">-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 에린어 고유 맞춤법 핵심 정리 배너 -->
+    <div class="orthography-banner">
+      <div class="ortho-item">
+        <div class="ortho-imgs">
+          <img src="data/transparent/ㅐ.png" alt="ㅐ" />
+          <img src="data/transparent/ㅔ.png" alt="ㅔ" />
+        </div>
+        <div class="ortho-desc">
+          <strong>📌 ㅐ와 ㅔ의 맞춤법 차이</strong><br />
+          직관적으로 <code>ㅏ + ㅣ</code>로 만드는 <strong>ㅐ</strong>와 달리, <strong>ㅔ</strong>는 <code>ㅓ + ㅣ</code>가 아니라 <strong><code>ㅣ + ㅏ</code></strong>로 만듭니다. (해독 시 가장 걸리기 쉬운 포인트!)
+        </div>
+      </div>
+
+      <div class="ortho-item">
+        <div class="ortho-imgs">
+          <img src="data/transparent/ㅒ.png" alt="ㅒ" />
+          <img src="data/transparent/ㅖ.png" alt="ㅖ" />
+        </div>
+        <div class="ortho-desc">
+          <strong>📌 ㅒ와 ㅖ의 오른쪽 위 반점(Tick)</strong><br />
+          자음 된소리(<code>ㄲ, ㄸ, ㅃ, ㅆ, ㅉ</code>)를 표현할 때처럼, <strong>ㅒ</strong>와 <strong>ㅖ</strong>도 각각 <strong>ㅐ</strong>와 <strong>ㅔ</strong>의 <strong>오른쪽 위에 반점</strong>을 찍어 표현합니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 공통: data 폴더에서 추출한 에린어 문자 도감 및 클릭 입력기 -->
+    <div class="card">
+      <div class="section-title">
+        <span>🔠 에린어 문자 변환표 (`data/` 추출 리소스 · 클릭 시 원문에 입력)</span>
+        <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 500;">
+          모음은 상하/좌우 대칭 구조이며, 카드를 클릭해 에린어를 직접 입력·해독할 수도 있습니다.
+        </span>
+      </div>
+
+      <div id="charTableContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    // ==================== 공통 한글/영문/에린어 상수 ====================
+    const CHOSEONG = [
+      "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ",
+      "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+    ];
+    const JUNGSEONG = [
+      "ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ",
+      "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"
+    ];
+    const JONGSEONG = [
+      "", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ",
+      "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ",
+      "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+    ];
+
+    const COMPOUND_JONGSEONG = {
+      "ㄳ": ["ㄱ", "ㅅ"], "ㄵ": ["ㄴ", "ㅈ"], "ㄶ": ["ㄴ", "ㅎ"],
+      "ㄺ": ["ㄹ", "ㄱ"], "ㄻ": ["ㄹ", "ㅁ"], "ㄼ": ["ㄹ", "ㅂ"],
+      "ㄽ": ["ㄹ", "ㅅ"], "ㄾ": ["ㄹ", "ㅌ"], "ㄿ": ["ㄹ", "ㅍ"],
+      "ㅀ": ["ㄹ", "ㅎ"], "ㅄ": ["ㅂ", "ㅅ"]
+    };
+
+    const DOUBLE_CONSONANTS = {
+      "ㄲ": ["ㄱ", "ㄱ"], "ㄸ": ["ㄷ", "ㄷ"], "ㅃ": ["ㅂ", "ㅂ"],
+      "ㅆ": ["ㅅ", "ㅅ"], "ㅉ": ["ㅈ", "ㅈ"]
+    };
+
+    // 에린어 고유 맞춤법 기반 복합모음 분리 규칙:
+    // - ㅐ = ㅏ + ㅣ
+    // - ㅔ = ㅣ + ㅏ (ㅓ + ㅣ가 아님!)
+    // - ㅒ, ㅖ = 각각 ㅐ, ㅔ 오른쪽 위에 반점을 찍는 고유 기호이므로 단일 타일 유지
+    const COMPOUND_VOWELS = {
+      "ㅐ": ["ㅏ", "ㅣ"],
+      "ㅔ": ["ㅣ", "ㅏ"],
+      "ㅚ": ["ㅗ", "ㅣ"],
+      "ㅟ": ["ㅜ", "ㅣ"],
+      "ㅘ": ["ㅗ", "ㅏ"],
+      "ㅙ": ["ㅗ", "ㅏ", "ㅣ"],
+      "ㅝ": ["ㅜ", "ㅓ"],
+      "ㅞ": ["ㅜ", "ㅣ", "ㅏ"],
+      "ㅢ": ["ㅡ", "ㅣ"]
+    };
+
+    const JAMO_TO_QWERTY = {
+      "ㄱ": "r", "ㄴ": "s", "ㄷ": "e", "ㄹ": "f", "ㅁ": "a", "ㅂ": "q", "ㅅ": "t",
+      "ㅇ": "d", "ㅈ": "w", "ㅊ": "c", "ㅋ": "z", "ㅌ": "x", "ㅍ": "v", "ㅎ": "g",
+      "ㄲ": "R", "ㄸ": "E", "ㅃ": "Q", "ㅆ": "T", "ㅉ": "W",
+      "ㅏ": "k", "ㅐ": "o", "ㅓ": "j", "ㅔ": "p", "ㅗ": "h", "ㅚ": "hl", "ㅜ": "n",
+      "ㅟ": "nl", "ㅡ": "m", "ㅣ": "l", "ㅑ": "i", "ㅒ": "O", "ㅕ": "u", "ㅖ": "P",
+      "ㅘ": "hk", "ㅙ": "ho", "ㅛ": "y", "ㅝ": "nj", "ㅞ": "np", "ㅠ": "b", "ㅢ": "ml"
+    };
+
+    const QWERTY_TO_JAMO = {
+      q: "ㅂ", Q: "ㅃ", w: "ㅈ", W: "ㅉ", e: "ㄷ", E: "ㄸ", r: "ㄱ", R: "ㄲ", t: "ㅅ", T: "ㅆ",
+      y: "ㅛ", u: "ㅕ", i: "ㅑ", o: "ㅐ", O: "ㅒ", p: "ㅔ", P: "ㅖ",
+      a: "ㅁ", s: "ㄴ", d: "ㅇ", f: "ㄹ", g: "ㅎ", h: "ㅗ", j: "ㅓ", k: "ㅏ", l: "ㅣ",
+      z: "ㅋ", x: "ㅌ", c: "ㅊ", v: "ㅍ", b: "ㅠ", n: "ㅜ", m: "ㅡ"
+    };
+
+    // 에린어 전용 폰트(ErinLang) 코드포인트 매핑 (유니코드 U+FFA1 ~ U+FFDC 영역)
+    // 일반 한글 음절(U+AC00~U+D7A3), 단순 한글 호환 자모(U+3131~U+3163), 영문자(A-Z, a-z)와 겹치지 않음
+    const JAMO_TO_FF_CODE = {
+      "ㄱ": 0xFFA1, "ㄲ": 0xFFA2, "ㄳ": 0xFFA3, "ㄴ": 0xFFA4, "ㄵ": 0xFFA5, "ㄶ": 0xFFA6,
+      "ㄷ": 0xFFA7, "ㄸ": 0xFFA8, "ㄹ": 0xFFA9, "ㄺ": 0xFFAA, "ㄻ": 0xFFAB, "ㄼ": 0xFFAC,
+      "ㄽ": 0xFFAD, "ㄾ": 0xFFAE, "ㄿ": 0xFFAF, "ㅀ": 0xFFB0, "ㅁ": 0xFFB1, "ㅂ": 0xFFB2,
+      "ㅃ": 0xFFB3, "ㅄ": 0xFFB4, "ㅅ": 0xFFB5, "ㅆ": 0xFFB6, "ㅇ": 0xFFB7, "ㅈ": 0xFFB8,
+      "ㅉ": 0xFFB9, "ㅊ": 0xFFBA, "ㅋ": 0xFFBB, "ㅌ": 0xFFBC, "ㅍ": 0xFFBD, "ㅎ": 0xFFBE,
+      "ㅏ": 0xFFC2, "ㅐ": 0xFFC3, "ㅑ": 0xFFC4, "ㅒ": 0xFFC5, "ㅓ": 0xFFC6, "ㅔ": 0xFFC7,
+      "ㅕ": 0xFFCA, "ㅖ": 0xFFCB, "ㅗ": 0xFFCC, "ㅘ": 0xFFCD, "ㅙ": 0xFFCE, "ㅚ": 0xFFCF,
+      "ㅛ": 0xFFD2, "ㅜ": 0xFFD3, "ㅝ": 0xFFD4, "ㅞ": 0xFFD5, "ㅟ": 0xFFD6, "ㅠ": 0xFFD7,
+      "ㅡ": 0xFFDA, "ㅢ": 0xFFDB, "ㅣ": 0xFFDC
+    };
+
+    const JAMO_TO_FF_CHAR = {};
+    const FF_CHAR_TO_JAMO = {};
+    for (const [jamo, cp] of Object.entries(JAMO_TO_FF_CODE)) {
+      const ch = String.fromCharCode(cp);
+      JAMO_TO_FF_CHAR[jamo] = ch;
+      FF_CHAR_TO_JAMO[ch] = jamo;
+    }
+
+    const SYMMETRY_INFO = {
+      "ㄲ": "ㄱ + 우측 상단 반점", "ㄸ": "ㄷ + 우측 상단 반점", "ㅃ": "ㅂ + 우측 상단 반점",
+      "ㅆ": "ㅅ + 우측 상단 반점", "ㅉ": "ㅈ + 우측 상단 반점",
+      "ㅏ": "↔ ㅓ (좌우 대칭)", "ㅓ": "↔ ㅏ (좌우 대칭)",
+      "ㅗ": "↕ ㅜ (상하 대칭)", "ㅜ": "↕ ㅗ (상하 대칭)",
+      "ㅑ": "↔ ㅕ (좌우 대칭)", "ㅕ": "↔ ㅑ (좌우 대칭)",
+      "ㅛ": "↕ ㅠ (상하 대칭)", "ㅠ": "↕ ㅛ (상하 대칭)",
+      "ㅐ": "ㅏ + ㅣ (직관적 결합)",
+      "ㅔ": "ㅣ + ㅏ (주의: ㅓ+ㅣ 아님!)",
+      "ㅒ": "ㅐ + 우측 상단 반점",
+      "ㅖ": "ㅔ(ㅣ+ㅏ) + 우측 상단 반점"
+    };
+
+    const CHAR_GROUPS = [
+      {
+        title: "기본 자음 (14자)",
+        items: ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+      },
+      {
+        title: "쌍자음 / 된소리 (5자 · 단자음 오른쪽 위 반점 또는 단자음 2개 연속 배치)",
+        items: ["ㄲ", "ㄸ", "ㅃ", "ㅆ", "ㅉ"]
+      },
+      {
+        title: "기본 모음 (10자 · 상하/좌우 대칭 구조)",
+        items: ["ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ", "ㅑ", "ㅕ", "ㅛ", "ㅠ"]
+      },
+      {
+        title: "복합 모음 (11자 · ㅐ=ㅏ+ㅣ, ㅔ=ㅣ+ㅏ, ㅒ/ㅖ=우측 상단 반점)",
+        items: ["ㅐ", "ㅔ", "ㅒ", "ㅖ", "ㅚ", "ㅟ", "ㅘ", "ㅙ", "ㅝ", "ㅞ", "ㅢ"]
+      }
+    ];
+
+    const SAMPLE_POEM = [
+      "패션 선언",
+      "스타일은 우리를",
+      "속박하지 않는다",
+      "그저 선택하는",
+      "순간 정의될뿐",
+      "그러니 패션이라는",
+      "언어로 우리가",
+      "누구인지 자유롭게",
+      "외쳐라"
+    ].join("\n");
+
+    // ==================== 탭 전환 ====================
+    const tabBtnText = document.getElementById("tabBtnText");
+    const tabBtnOcr = document.getElementById("tabBtnOcr");
+    const panelText = document.getElementById("panelText");
+    const panelOcr = document.getElementById("panelOcr");
+
+    function switchTab(mode) {
+      if (mode === "text") {
+        tabBtnText.classList.add("active");
+        tabBtnOcr.classList.remove("active");
+        panelText.classList.add("active");
+        panelOcr.classList.remove("active");
+      } else {
+        tabBtnOcr.classList.add("active");
+        tabBtnText.classList.remove("active");
+        panelOcr.classList.add("active");
+        panelText.classList.remove("active");
+        if (!ocrState.imgLoaded) {
+          loadTargetSampleImage();
+        }
+      }
+    }
+
+    tabBtnText.addEventListener("click", () => switchTab("text"));
+    tabBtnOcr.addEventListener("click", () => switchTab("ocr"));
+
+    // ==================== 탭 1: 텍스트 -> 에린어 번역 로직 ====================
+    const inputText = document.getElementById("inputText");
+    const doubleConsonantMode = document.getElementById("doubleConsonantMode");
+    const compoundVowelMode = document.getElementById("compoundVowelMode");
+    const renderStyle = document.getElementById("renderStyle");
+    const captionMode = document.getElementById("captionMode");
+    const glyphSize = document.getElementById("glyphSize");
+    const glyphSizeLabel = document.getElementById("glyphSizeLabel");
+    const textAlign = document.getElementById("textAlign");
+    const erinViewport = document.getElementById("erinViewport");
+    const jamoOutput = document.getElementById("jamoOutput");
+    const qwertyOutput = document.getElementById("qwertyOutput");
+    const assembledOutput = document.getElementById("assembledOutput");
+    const fontCodeOutput = document.getElementById("fontCodeOutput");
+    const fontMixedPreview = document.getElementById("fontMixedPreview");
+
+    function charToJamoTokens(ch, expandDoubleConsonant, expandCompoundVowel) {
+      // 에린어 전용 유니코드(U+FFA1 ~ U+FFDC) 문자가 입력된 경우 역변환 지원
+      if (FF_CHAR_TO_JAMO[ch]) {
+        const mappedJamo = FF_CHAR_TO_JAMO[ch];
+        if (COMPOUND_JONGSEONG[mappedJamo]) {
+          return normalizeJamoList(COMPOUND_JONGSEONG[mappedJamo], expandDoubleConsonant, expandCompoundVowel);
+        }
+        return normalizeJamoList([mappedJamo], expandDoubleConsonant, expandCompoundVowel);
+      }
+
+      const code = ch.charCodeAt(0);
+      if (code >= 0xac00 && code <= 0xd7a3) {
+        const offset = code - 0xac00;
+        const choIdx = Math.floor(offset / (21 * 28));
+        const jungIdx = Math.floor((offset % (21 * 28)) / 28);
+        const jongIdx = offset % 28;
+
+        const rawJamos = [CHOSEONG[choIdx], JUNGSEONG[jungIdx]];
+        if (jongIdx > 0) {
+          const jong = JONGSEONG[jongIdx];
+          if (COMPOUND_JONGSEONG[jong]) {
+            rawJamos.push(...COMPOUND_JONGSEONG[jong]);
+          } else {
+            rawJamos.push(jong);
+          }
+        }
+        return normalizeJamoList(rawJamos, expandDoubleConsonant, expandCompoundVowel);
+      }
+
+      if (COMPOUND_JONGSEONG[ch]) {
+        return normalizeJamoList(COMPOUND_JONGSEONG[ch], expandDoubleConsonant, expandCompoundVowel);
+      }
+      if (JAMO_TO_QWERTY[ch]) {
+        return normalizeJamoList([ch], expandDoubleConsonant, expandCompoundVowel);
+      }
+
+      if ((ch >= "a" && ch <= "z") || (ch >= "A" && ch <= "Z")) {
+        const mapped = QWERTY_TO_JAMO[ch] || QWERTY_TO_JAMO[ch.toLowerCase()];
+        if (mapped) {
+          return normalizeJamoList([mapped], expandDoubleConsonant, expandCompoundVowel);
+        }
+      }
+
+      return [{ type: ch === " " ? "space" : "unknown", char: ch }];
+    }
+
+    function normalizeJamoList(jamos, expandDoubleConsonant, expandCompoundVowel) {
+      const result = [];
+      for (const j of jamos) {
+        if (expandDoubleConsonant && DOUBLE_CONSONANTS[j]) {
+          for (const sub of DOUBLE_CONSONANTS[j]) {
+            result.push({ type: "glyph", jamo: sub, qwerty: JAMO_TO_QWERTY[sub], ffChar: JAMO_TO_FF_CHAR[sub] || "" });
+          }
+        } else if (expandCompoundVowel && COMPOUND_VOWELS[j]) {
+          for (const sub of COMPOUND_VOWELS[j]) {
+            result.push({ type: "glyph", jamo: sub, qwerty: JAMO_TO_QWERTY[sub], ffChar: JAMO_TO_FF_CHAR[sub] || "" });
+          }
+        } else {
+          result.push({ type: "glyph", jamo: j, qwerty: JAMO_TO_QWERTY[j] || "", ffChar: JAMO_TO_FF_CHAR[j] || "" });
+        }
+      }
+      return result;
+    }
+
+    // 자모 시퀀스 -> 완성형 한글 음절 조합 (에린어 맞춤법: 'ㅣㅏ'->'ㅔ', 'ㅏㅣ\''->'ㅒ', 'ㅣㅏ\''->'ㅖ' 포함)
+    function assembleHangulFromJamos(tokens) {
+      const CHO_MAP = {};
+      CHOSEONG.forEach((c, i) => (CHO_MAP[c] = i));
+      const JUNG_MAP = {};
+      JUNGSEONG.forEach((c, i) => (JUNG_MAP[c] = i));
+      const JONG_MAP = {};
+      JONGSEONG.forEach((c, i) => {
+        if (c) JONG_MAP[c] = i;
+      });
+
+      const VOWEL_COMBINE_3 = {
+        "ㅗㅏㅣ": "ㅙ",
+        "ㅜㅓㅣ": "ㅞ",
+        "ㅜㅣㅏ": "ㅞ"
+      };
+      const VOWEL_COMBINE_2 = {
+        "ㅗㅏ": "ㅘ", "ㅗㅐ": "ㅙ", "ㅗㅣ": "ㅚ",
+        "ㅜㅓ": "ㅝ", "ㅜㅔ": "ㅞ", "ㅜㅣ": "ㅟ",
+        "ㅡㅣ": "ㅢ",
+        "ㅏㅣ": "ㅐ",
+        "ㅣㅏ": "ㅔ", "ㅓㅣ": "ㅔ",
+        "ㅏㅣ'": "ㅒ", "ㅑㅣ": "ㅒ",
+        "ㅣㅏ'": "ㅖ", "ㅣㅑ": "ㅖ", "ㅕㅣ": "ㅖ"
+      };
+      const JONG_COMBINE = {
+        "ㄱㅅ": "ㄳ", "ㄴㅈ": "ㄵ", "ㄴㅎ": "ㄶ", "ㄹㄱ": "ㄺ", "ㄹㅁ": "ㄻ",
+        "ㄹㅂ": "ㄼ", "ㄹㅅ": "ㄽ", "ㄹㅌ": "ㄾ", "ㄹㅍ": "ㄿ", "ㄹㅎ": "ㅀ", "ㅂㅅ": "ㅄ"
+      };
+      const DOUBLE_CHO_COMBINE = {
+        "ㄱㄱ": "ㄲ", "ㄷㄷ": "ㄸ", "ㅂㅂ": "ㅃ", "ㅅㅅ": "ㅆ", "ㅈㅈ": "ㅉ"
+      };
+
+      // 1단계: 연속된 모음 결합 처리
+      const mergedVowels = [];
+      for (let i = 0; i < tokens.length; i++) {
+        const cur = tokens[i];
+        if (cur.type !== "glyph") {
+          mergedVowels.push(cur);
+          continue;
+        }
+        if (
+          i + 2 < tokens.length &&
+          tokens[i + 1].type === "glyph" &&
+          tokens[i + 2].type === "glyph" &&
+          VOWEL_COMBINE_3[cur.jamo + tokens[i + 1].jamo + tokens[i + 2].jamo]
+        ) {
+          mergedVowels.push({
+            type: "glyph",
+            jamo: VOWEL_COMBINE_3[cur.jamo + tokens[i + 1].jamo + tokens[i + 2].jamo]
+          });
+          i += 2;
+        } else if (
+          i + 1 < tokens.length &&
+          tokens[i + 1].type === "glyph" &&
+          VOWEL_COMBINE_2[cur.jamo + tokens[i + 1].jamo]
+        ) {
+          mergedVowels.push({
+            type: "glyph",
+            jamo: VOWEL_COMBINE_2[cur.jamo + tokens[i + 1].jamo]
+          });
+          i += 1;
+        } else if (cur.jamo === "ㅣ'") {
+          mergedVowels.push({ type: "glyph", jamo: "ㅣ" });
+        } else if (cur.jamo === "ㅏ'") {
+          mergedVowels.push({ type: "glyph", jamo: "ㅏ" });
+        } else {
+          mergedVowels.push(cur);
+        }
+      }
+
+      // 2단계: 단자음 2개 연속 배치(ㄱ+ㄱ 등) 뒤에 모음이 오면 쌍자음 초성으로 결합
+      const merged = [];
+      for (let i = 0; i < mergedVowels.length; i++) {
+        const cur = mergedVowels[i];
+        if (
+          cur.type === "glyph" &&
+          i + 2 < mergedVowels.length &&
+          mergedVowels[i + 1].type === "glyph" &&
+          mergedVowels[i + 2].type === "glyph" &&
+          DOUBLE_CHO_COMBINE[cur.jamo + mergedVowels[i + 1].jamo] &&
+          JUNG_MAP[mergedVowels[i + 2].jamo] !== undefined
+        ) {
+          const prevIsVowel =
+            merged.length > 0 &&
+            merged[merged.length - 1].type === "glyph" &&
+            JUNG_MAP[merged[merged.length - 1].jamo] !== undefined;
+          if (!prevIsVowel) {
+            merged.push({
+              type: "glyph",
+              jamo: DOUBLE_CHO_COMBINE[cur.jamo + mergedVowels[i + 1].jamo]
+            });
+            i += 1;
+            continue;
+          }
+        }
+        merged.push(cur);
+      }
+
+      // 3단계: 초성 + 중성 (+ 종성) 결합
+      let out = "";
+      let i = 0;
+      while (i < merged.length) {
+        const t = merged[i];
+        if (t.type === "space") {
+          out += " ";
+          i++;
+          continue;
+        }
+        if (t.type !== "glyph") {
+          out += t.char || "";
+          i++;
+          continue;
+        }
+
+        const j1 = t.jamo;
+        if (
+          CHO_MAP[j1] !== undefined &&
+          i + 1 < merged.length &&
+          merged[i + 1].type === "glyph" &&
+          JUNG_MAP[merged[i + 1].jamo] !== undefined
+        ) {
+          const cho = CHO_MAP[j1];
+          const jung = JUNG_MAP[merged[i + 1].jamo];
+          let jong = 0;
+          let consumed = 2;
+
+          if (
+            i + 2 < merged.length &&
+            merged[i + 2].type === "glyph" &&
+            JONG_MAP[merged[i + 2].jamo] !== undefined
+          ) {
+            const nextIsVowel =
+              i + 3 < merged.length &&
+              merged[i + 3].type === "glyph" &&
+              JUNG_MAP[merged[i + 3].jamo] !== undefined;
+
+            if (!nextIsVowel) {
+              if (
+                i + 3 < merged.length &&
+                merged[i + 3].type === "glyph" &&
+                JONG_COMBINE[merged[i + 2].jamo + merged[i + 3].jamo]
+              ) {
+                const afterNextIsVowel =
+                  i + 4 < merged.length &&
+                  merged[i + 4].type === "glyph" &&
+                  JUNG_MAP[merged[i + 4].jamo] !== undefined;
+                if (!afterNextIsVowel) {
+                  const combinedJong = JONG_COMBINE[merged[i + 2].jamo + merged[i + 3].jamo];
+                  if (JONG_MAP[combinedJong] !== undefined) {
+                    jong = JONG_MAP[combinedJong];
+                    consumed = 4;
+                  }
+                }
+              }
+              if (consumed === 2) {
+                jong = JONG_MAP[merged[i + 2].jamo];
+                consumed = 3;
+              }
+            }
+          }
+
+          out += String.fromCharCode(0xac00 + (cho * 21 + jung) * 28 + jong);
+          i += consumed;
+        } else {
+          out += j1;
+          i++;
+        }
+      }
+      return out;
+    }
+
+    let currentFontLines = [];
+
+    function renderTranslation() {
+      const text = inputText.value;
+      const expandDouble = doubleConsonantMode.value === "double";
+      const expandVowel = compoundVowelMode.value === "decomposed";
+      const style = renderStyle.value;
+      const caption = captionMode.value;
+      const size = parseInt(glyphSize.value, 10);
+      const align = textAlign.value;
+
+      glyphSizeLabel.textContent = size + "px";
+      document.documentElement.style.setProperty("--glyph-height", size + "px");
+
+      erinViewport.className = "erin-viewport";
+      if (style === "monument") {
+        erinViewport.classList.add("style-monument");
+      } else if (style === "webfont") {
+        erinViewport.classList.add("style-webfont");
+      } else {
+        erinViewport.classList.add("style-black");
+      }
+
+      if (align === "left") {
+        erinViewport.classList.add("align-left");
+      } else {
+        erinViewport.classList.add("align-center");
+      }
+
+      const fontDemoBox = document.getElementById("fontDemoBox");
+      if (fontDemoBox) {
+        fontDemoBox.style.display = style === "webfont" ? "block" : "none";
+      }
+
+      erinViewport.innerHTML = "";
+
+      const lines = text.split(/\r?\n/);
+      const allJamoStrings = [];
+      const allQwertyStrings = [];
+      const allAssembledLines = [];
+      const allFontStrings = [];
+
+      for (const line of lines) {
+        const lineTokens = [];
+        for (const ch of line) {
+          const tokens = charToJamoTokens(ch, expandDouble, expandVowel);
+          lineTokens.push(...tokens);
+        }
+
+        const lineJamos = [];
+        const lineQwertys = [];
+        const lineFontChars = [];
+
+        if (style === "webfont") {
+          const wfLine = document.createElement("div");
+          wfLine.className = "erin-webfont-line";
+          for (const tok of lineTokens) {
+            if (tok.type === "space") {
+              wfLine.textContent += " ";
+              lineJamos.push(" ");
+              lineQwertys.push(" ");
+              lineFontChars.push(" ");
+            } else if (tok.type === "glyph") {
+              const fc = tok.ffChar || JAMO_TO_FF_CHAR[tok.jamo] || tok.jamo;
+              wfLine.textContent += fc;
+              lineJamos.push(tok.jamo);
+              lineQwertys.push(tok.qwerty);
+              lineFontChars.push(fc);
+            } else {
+              wfLine.textContent += tok.char;
+              lineJamos.push(tok.char);
+              lineQwertys.push(tok.char);
+              lineFontChars.push(tok.char);
+            }
+          }
+          erinViewport.appendChild(wfLine);
+        } else {
+          const lineEl = document.createElement("div");
+          lineEl.className = "erin-line";
+
+          for (const tok of lineTokens) {
+            if (tok.type === "space") {
+              const sp = document.createElement("span");
+              sp.className = "erin-space";
+              lineEl.appendChild(sp);
+              lineJamos.push(" ");
+              lineQwertys.push(" ");
+              lineFontChars.push(" ");
+            } else if (tok.type === "glyph") {
+              const wrap = document.createElement("span");
+              wrap.className = "glyph-wrap";
+
+              const img = document.createElement("img");
+              img.src = `data/transparent/${encodeURIComponent(tok.jamo)}.png`;
+              img.alt = tok.jamo;
+              const cpHex = JAMO_TO_FF_CODE[tok.jamo] ? `U+${JAMO_TO_FF_CODE[tok.jamo].toString(16).toUpperCase()}` : "";
+              img.title = `한글: ${tok.jamo} / 영문(두벌식): ${tok.qwerty} / 폰트 코드: ${cpHex}`;
+              img.className = style === "monument" ? "glyph-monument" : "glyph-black";
+              wrap.appendChild(img);
+
+              if (caption !== "none") {
+                const cap = document.createElement("span");
+                cap.className = "glyph-caption";
+                if (caption === "jamo") cap.textContent = tok.jamo;
+                else if (caption === "qwerty") cap.textContent = tok.qwerty;
+                else cap.textContent = `${tok.jamo}(${tok.qwerty})`;
+                wrap.appendChild(cap);
+              }
+
+              lineEl.appendChild(wrap);
+              lineJamos.push(tok.jamo);
+              lineQwertys.push(tok.qwerty);
+              lineFontChars.push(tok.ffChar || JAMO_TO_FF_CHAR[tok.jamo] || tok.jamo);
+            } else {
+              const unk = document.createElement("span");
+              unk.className = "unknown-char";
+              unk.textContent = tok.char;
+              lineEl.appendChild(unk);
+              lineJamos.push(tok.char);
+              lineQwertys.push(tok.char);
+              lineFontChars.push(tok.char);
+            }
+          }
+
+          erinViewport.appendChild(lineEl);
+        }
+
+        allJamoStrings.push(lineJamos.join(" "));
+        allQwertyStrings.push(lineQwertys.join(""));
+        allAssembledLines.push(assembleHangulFromJamos(lineTokens));
+        allFontStrings.push(lineFontChars.join(""));
+      }
+
+      currentFontLines = allFontStrings;
+      jamoOutput.textContent = allJamoStrings.join(" / ") || "-";
+      qwertyOutput.textContent = allQwertyStrings.join(" / ") || "-";
+      assembledOutput.textContent = allAssembledLines.join(" / ") || "-";
+      fontCodeOutput.textContent = allFontStrings.join(" / ") || "-";
+
+      const firstKor = allAssembledLines[0] || "패션 선언";
+      const firstFont = allFontStrings[0] || "";
+      fontMixedPreview.textContent = `${firstKor} (ㄱㄴㄷ / AMY) → ${firstFont}`;
+    }
+
+    function buildRenderedCanvas(forceMonument = false) {
+      const useMonument = forceMonument || renderStyle.value === "monument";
+      const size = parseInt(glyphSize.value, 10);
+      const padX = 36;
+      const padY = 36;
+      const lineGap = 16;
+
+      // 현재 입력된 텍스트에서 이미지 행 구성
+      const expandDouble = doubleConsonantMode.value === "double";
+      const expandVowel = compoundVowelMode.value === "decomposed";
+      const rawLines = inputText.value.split(/\r?\n/);
+
+      // DOM 내 이미 로드된 img 캐시 수집
+      const loadedImgMap = {};
+      document.querySelectorAll("img").forEach(im => {
+        if (im.complete && im.naturalHeight > 0 && im.alt) {
+          loadedImgMap[im.alt] = im;
+        }
+      });
+
+      const lineItems = [];
+      let maxLineWidth = 0;
+
+      for (const line of rawLines) {
+        const row = [];
+        let rowW = 0;
+        for (const ch of line) {
+          const tokens = charToJamoTokens(ch, expandDouble, expandVowel);
+          for (const tok of tokens) {
+            if (tok.type === "space") {
+              const w = Math.round(size * 0.48);
+              row.push({ type: "space", width: w });
+              rowW += w + 4;
+            } else if (tok.type === "glyph") {
+              const img = loadedImgMap[tok.jamo];
+              if (img) {
+                const w = Math.round((img.naturalWidth / img.naturalHeight) * size);
+                row.push({ type: "img", img, width: w });
+                rowW += w + 4;
+              }
+            }
+          }
+        }
+        maxLineWidth = Math.max(maxLineWidth, rowW);
+        lineItems.push({ row, rowW });
+      }
+
+      if (!lineItems.length) return null;
+
+      const canvasW = Math.max(360, maxLineWidth + padX * 2);
+      const canvasH = Math.max(140, lineItems.length * (size + lineGap) - lineGap + padY * 2);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = canvasW;
+      canvas.height = canvasH;
+      const ctx = canvas.getContext("2d");
+
+      if (useMonument) {
+        const grad = ctx.createLinearGradient(0, 0, canvasW, canvasH);
+        grad.addColorStop(0, "#324a63");
+        grad.addColorStop(0.5, "#3d5875");
+        grad.addColorStop(1, "#2c4259");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvasW, canvasH);
+      } else {
+        ctx.fillStyle = "#f4f6fb";
+        ctx.fillRect(0, 0, canvasW, canvasH);
+      }
+
+      const tintCanvas = document.createElement("canvas");
+      const tintCtx = tintCanvas.getContext("2d");
+
+      const align = textAlign.value;
+      lineItems.forEach((lineObj, idx) => {
+        let x = align === "left" ? padX : Math.round((canvasW - lineObj.rowW) / 2);
+        const y = padY + idx * (size + lineGap);
+
+        for (const item of lineObj.row) {
+          if (item.type === "img") {
+            if (useMonument) {
+              // 원본 PNG가 투명 배경 + #000000 검은색이므로 벽면 모드에서는 밝은 흰색으로 틴팅하여 합성
+              tintCanvas.width = item.width;
+              tintCanvas.height = size;
+              tintCtx.clearRect(0, 0, item.width, size);
+              tintCtx.drawImage(item.img, 0, 0, item.width, size);
+              tintCtx.globalCompositeOperation = "source-in";
+              tintCtx.fillStyle = "#eef4ff";
+              tintCtx.fillRect(0, 0, item.width, size);
+              tintCtx.globalCompositeOperation = "source-over";
+              ctx.drawImage(tintCanvas, x, y);
+            } else {
+              ctx.drawImage(item.img, x, y, item.width, size);
+            }
+          }
+          x += item.width + 4;
+        }
+      });
+
+      return canvas;
+    }
+
+    function downloadAsPng() {
+      const canvas = buildRenderedCanvas(false);
+      if (!canvas) return;
+      const link = document.createElement("a");
+      link.download = "erin-translation.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+
+    // ==================== 탭 2: 스크린샷 -> 한국어/영어 OCR 엔진 ====================
+    const ocrSrcCanvas = document.getElementById("ocrSrcCanvas");
+    const ocrSrcCtx = ocrSrcCanvas.getContext("2d");
+    const ocrProcCanvas = document.getElementById("ocrProcCanvas");
+    const ocrProcCtx = ocrProcCanvas.getContext("2d");
+
+    const ocrState = {
+      img: null,
+      imgLoaded: false,
+      quad: [
+        { x: 745, y: 250 },
+        { x: 1144, y: 348 },
+        { x: 1130, y: 714 },
+        { x: 735, y: 672 }
+      ],
+      draggingIdx: -1,
+      warpedImageData: null,
+      binaryMask: null,
+      warpW: 656,
+      warpH: 566,
+      linesData: [],
+      selectedChip: null
+    };
+
+    const preparedTemplates = {};
+    function initOcrTemplates() {
+      if (!window.ERIN_OCR_TEMPLATES || !window.ERIN_OCR_TEMPLATES.templates) return;
+      const rawT = window.ERIN_OCR_TEMPLATES.templates;
+      for (const [jamo, obj] of Object.entries(rawT)) {
+        const grid = new Float32Array(obj.grid);
+        let sum = 0;
+        for (let i = 0; i < grid.length; i++) sum += grid[i];
+        const mean = sum / grid.length;
+        const vecZm = new Float32Array(grid.length);
+        let normSq = 0;
+        for (let i = 0; i < grid.length; i++) {
+          const d = grid[i] - mean;
+          vecZm[i] = d;
+          normSq += d * d;
+        }
+        const norm = Math.sqrt(normSq) + 1e-6;
+        for (let i = 0; i < grid.length; i++) vecZm[i] /= norm;
+
+        preparedTemplates[jamo] = {
+          jamo,
+          aspect: obj.aspect,
+          grid,
+          vecZm
+        };
+      }
+    }
+
+    function solveLinearSystem(A, b) {
+      const n = b.length;
+      const M = A.map((row, i) => [...row, b[i]]);
+
+      for (let col = 0; col < n; col++) {
+        let maxRow = col;
+        let maxVal = Math.abs(M[col][col]);
+        for (let r = col + 1; r < n; r++) {
+          if (Math.abs(M[r][col]) > maxVal) {
+            maxVal = Math.abs(M[r][col]);
+            maxRow = r;
+          }
+        }
+        if (maxRow !== col) {
+          const tmp = M[col];
+          M[col] = M[maxRow];
+          M[maxRow] = tmp;
+        }
+        const pivot = M[col][col];
+        if (Math.abs(pivot) < 1e-12) continue;
+
+        for (let j = col; j <= n; j++) M[col][j] /= pivot;
+        for (let r = 0; r < n; r++) {
+          if (r === col) continue;
+          const factor = M[r][col];
+          for (let j = col; j <= n; j++) {
+            M[r][j] -= factor * M[col][j];
+          }
+        }
+      }
+      return M.map(row => row[n]);
+    }
+
+    function computeHomography(dstPts, srcPts) {
+      const A = [];
+      const b = [];
+      for (let i = 0; i < 4; i++) {
+        const dx = dstPts[i].x;
+        const dy = dstPts[i].y;
+        const sx = srcPts[i].x;
+        const sy = srcPts[i].y;
+        A.push([dx, dy, 1, 0, 0, 0, -dx * sx, -dy * sx]);
+        b.push(sx);
+        A.push([0, 0, 0, dx, dy, 1, -dx * sy, -dy * sy]);
+        b.push(sy);
+      }
+      return solveLinearSystem(A, b);
+    }
+
+    function drawSourceCanvas() {
+      if (!ocrState.img) return;
+      const img = ocrState.img;
+      ocrSrcCanvas.width = img.naturalWidth || img.width;
+      ocrSrcCanvas.height = img.naturalHeight || img.height;
+
+      ocrSrcCtx.clearRect(0, 0, ocrSrcCanvas.width, ocrSrcCanvas.height);
+      ocrSrcCtx.drawImage(img, 0, 0);
+
+      const q = ocrState.quad;
+      ocrSrcCtx.save();
+      ocrSrcCtx.strokeStyle = "#73daca";
+      ocrSrcCtx.lineWidth = Math.max(2, Math.round(ocrSrcCanvas.width / 380));
+      ocrSrcCtx.fillStyle = "rgba(115, 218, 202, 0.12)";
+
+      ocrSrcCtx.beginPath();
+      ocrSrcCtx.moveTo(q[0].x, q[0].y);
+      ocrSrcCtx.lineTo(q[1].x, q[1].y);
+      ocrSrcCtx.lineTo(q[2].x, q[2].y);
+      ocrSrcCtx.lineTo(q[3].x, q[3].y);
+      ocrSrcCtx.closePath();
+      ocrSrcCtx.fill();
+      ocrSrcCtx.stroke();
+
+      const labels = ["1(좌상)", "2(우상)", "3(우하)", "4(좌하)"];
+      const handleRadius = Math.max(8, Math.round(ocrSrcCanvas.width / 130));
+      q.forEach((pt, idx) => {
+        ocrSrcCtx.beginPath();
+        ocrSrcCtx.arc(pt.x, pt.y, handleRadius, 0, Math.PI * 2);
+        ocrSrcCtx.fillStyle = "#e0af68";
+        ocrSrcCtx.fill();
+        ocrSrcCtx.strokeStyle = "#101521";
+        ocrSrcCtx.lineWidth = 2;
+        ocrSrcCtx.stroke();
+
+        ocrSrcCtx.font = `bold ${Math.max(13, Math.round(handleRadius * 1.3))}px sans-serif`;
+        ocrSrcCtx.fillStyle = "#eef2ff";
+        ocrSrcCtx.strokeStyle = "#101521";
+        ocrSrcCtx.lineWidth = 3;
+        ocrSrcCtx.strokeText(labels[idx], pt.x + handleRadius + 4, pt.y + 4);
+        ocrSrcCtx.fillText(labels[idx], pt.x + handleRadius + 4, pt.y + 4);
+      });
+      ocrSrcCtx.restore();
+    }
+
+    function resizeBilinear28(crop, w, h) {
+      const out = new Float32Array(28 * 28);
+      for (let gy = 0; gy < 28; gy++) {
+        const sy = (gy + 0.5) * (h / 28.0) - 0.5;
+        let y0 = Math.floor(sy);
+        const fy = sy - y0;
+        const y1 = Math.min(h - 1, Math.max(0, y0 + 1));
+        y0 = Math.min(h - 1, Math.max(0, y0));
+
+        for (let gx = 0; gx < 28; gx++) {
+          const sx = (gx + 0.5) * (w / 28.0) - 0.5;
+          let x0 = Math.floor(sx);
+          const fx = sx - x0;
+          const x1 = Math.min(w - 1, Math.max(0, x0 + 1));
+          x0 = Math.min(w - 1, max(0, x0));
+
+          const v00 = crop[y0 * w + x0];
+          const v01 = crop[y0 * w + x1];
+          const v10 = crop[y1 * w + x0];
+          const v11 = crop[y1 * w + x1];
+
+          out[gy * 28 + gx] =
+            (1.0 - fy) * ((1.0 - fx) * v00 + fx * v01) +
+            fy * ((1.0 - fx) * v10 + fx * v11);
+        }
+      }
+      return out;
+    }
+
+    function max(a, b) {
+      return a > b ? a : b;
+    }
+
+    function matchPatch(lineBin, lineW, lineH, xs, xe) {
+      let validY0 = -1;
+      let validY1 = -1;
+      for (let y = 0; y < lineH; y++) {
+        let rowSum = 0;
+        const rowOff = y * lineW;
+        for (let x = xs; x <= xe; x++) {
+          if (lineBin[rowOff + x]) rowSum++;
+        }
+        if (rowSum >= 2) {
+          if (validY0 === -1) validY0 = y;
+          validY1 = y;
+        }
+      }
+      if (validY0 === -1 || validY1 - validY0 + 1 < 8) {
+        return [{ jamo: "?", score: 0 }];
+      }
+
+      let validX0 = -1;
+      let validX1 = -1;
+      for (let x = xs; x <= xe; x++) {
+        let colSum = 0;
+        for (let y = validY0; y <= validY1; y++) {
+          if (lineBin[y * lineW + x]) colSum++;
+        }
+        if (colSum >= 1) {
+          if (validX0 === -1) validX0 = x;
+          validX1 = x;
+        }
+      }
+      if (validX0 === -1 || validX1 - validX0 + 1 < 3) {
+        return [{ jamo: "?", score: 0 }];
+      }
+
+      const w = validX1 - validX0 + 1;
+      const h = validY1 - validY0 + 1;
+      if (h < 8 || w < 3) {
+        return [{ jamo: "?", score: 0 }];
+      }
+
+      const crop = new Float32Array(w * h);
+      for (let y = 0; y < h; y++) {
+        const srcOff = (validY0 + y) * lineW + validX0;
+        const dstOff = y * w;
+        for (let x = 0; x < w; x++) {
+          crop[dstOff + x] = lineBin[srcOff + x] ? 1.0 : 0.0;
+        }
+      }
+
+      const aspect = w / h;
+      const grid = resizeBilinear28(crop, w, h);
+
+      let sum = 0;
+      for (let i = 0; i < 784; i++) sum += grid[i];
+      const mean = sum / 784.0;
+      const vecZm = new Float32Array(784);
+      let normSq = 0;
+      for (let i = 0; i < 784; i++) {
+        const d = grid[i] - mean;
+        vecZm[i] = d;
+        normSq += d * d;
+      }
+      const norm = Math.sqrt(normSq) + 1e-6;
+      for (let i = 0; i < 784; i++) vecZm[i] /= norm;
+
+      const scores = [];
+      for (const [jamo, t] of Object.entries(preparedTemplates)) {
+        let ncc = 0;
+        let inter = 0;
+        let union = 1e-6;
+        const tGrid = t.grid;
+        const tVecZm = t.vecZm;
+        for (let i = 0; i < 784; i++) {
+          ncc += vecZm[i] * tVecZm[i];
+          const a = grid[i];
+          const b = tGrid[i];
+          inter += a < b ? a : b;
+          union += a > b ? a : b;
+        }
+        const iou = inter / union;
+        const aspectDiff = Math.abs(aspect - t.aspect);
+        let aspectPen = 0;
+        if (jamo === "ㅣ" || jamo === "ㅣ'") {
+          aspectPen = aspect < 0.50 ? 0.0 : (aspect - 0.45) * 1.2;
+        } else {
+          aspectPen = aspect < 0.50 ? (0.52 - aspect) * 1.5 : aspectDiff * 0.25;
+        }
+        // ㅒ/ㅖ 우측 반점 조각(ㅣ', ㅏ')은 실제 우측 상단 반점이 뚜렷할 때만 우선 선택되도록 미세 보정
+        const tickBias = (jamo === "ㅣ'" || jamo === "ㅏ'") ? 0.015 : 0.0;
+        const score = 0.55 * ncc + 0.45 * iou - aspectPen - tickBias;
+        scores.push({ jamo, score });
+      }
+
+      scores.sort((a, b) => b.score - a.score);
+      return scores.slice(0, 5);
+    }
+
+    function percentile(arr, p) {
+      if (!arr.length) return 0;
+      const sorted = Float32Array.from(arr).sort();
+      const idx = Math.min(sorted.length - 1, Math.max(0, Math.floor((p / 100.0) * (sorted.length - 1))));
+      return sorted[idx];
+    }
+
+    function runOcrPipeline() {
+      if (!ocrState.img) return;
+      initOcrTemplates();
+
+      const srcW = ocrSrcCanvas.width;
+      const srcH = ocrSrcCanvas.height;
+      const srcData = ocrSrcCtx.getImageData(0, 0, srcW, srcH).data;
+
+      const W = ocrState.warpW;
+      const H = ocrState.warpH;
+      const dstPts = [
+        { x: 0, y: 0 },
+        { x: W, y: 0 },
+        { x: W, y: H },
+        { x: 0, y: H }
+      ];
+      const coeffs = computeHomography(dstPts, ocrState.quad);
+
+      const warpedData = ocrProcCtx.createImageData(W, H);
+      const wPixels = warpedData.data;
+      const gray = new Float32Array(W * H);
+      const flowerMask = new Uint8Array(W * H);
+
+      for (let y = 0; y < H; y++) {
+        for (let x = 0; x < W; x++) {
+          const denom = coeffs[6] * x + coeffs[7] * y + 1.0;
+          const sx = (coeffs[0] * x + coeffs[1] * y + coeffs[2]) / denom;
+          const sy = (coeffs[3] * x + coeffs[4] * y + coeffs[5]) / denom;
+
+          const x0 = Math.max(0, Math.min(srcW - 1, Math.floor(sx)));
+          const y0 = Math.max(0, Math.min(srcH - 1, Math.floor(sy)));
+          const x1 = Math.max(0, Math.min(srcW - 1, x0 + 1));
+          const y1 = Math.max(0, Math.min(srcH - 1, y0 + 1));
+          const fx = sx - Math.floor(sx);
+          const fy = sy - Math.floor(sy);
+
+          const i00 = (y0 * srcW + x0) * 4;
+          const i01 = (y0 * srcW + x1) * 4;
+          const i10 = (y1 * srcW + x0) * 4;
+          const i11 = (y1 * srcW + x1) * 4;
+
+          const r = (1 - fy) * ((1 - fx) * srcData[i00] + fx * srcData[i01]) + fy * ((1 - fx) * srcData[i10] + fx * srcData[i11]);
+          const g = (1 - fy) * ((1 - fx) * srcData[i00 + 1] + fx * srcData[i01 + 1]) + fy * ((1 - fx) * srcData[i10 + 1] + fx * srcData[i11 + 1]);
+          const b = (1 - fy) * ((1 - fx) * srcData[i00 + 2] + fx * srcData[i01 + 2]) + fy * ((1 - fx) * srcData[i10 + 2] + fx * srcData[i11 + 2]);
+
+          const idx = y * W + x;
+          const pIdx = idx * 4;
+          wPixels[pIdx] = r;
+          wPixels[pIdx + 1] = g;
+          wPixels[pIdx + 2] = b;
+          wPixels[pIdx + 3] = 255;
+
+          gray[idx] = 0.25 * r + 0.40 * g + 0.35 * b;
+          if (b - r > 102) {
+            flowerMask[idx] = 1;
+          }
+        }
+      }
+
+      for (let y = 0; y < H; y++) {
+        let lastValid = 68.0;
+        const rowOff = y * W;
+        for (let x = 0; x < W; x++) {
+          if (!flowerMask[rowOff + x]) {
+            lastValid = gray[rowOff + x];
+          } else {
+            gray[rowOff + x] = lastValid;
+          }
+        }
+      }
+
+      const samples = [];
+      for (let y = 0; y < H; y += 4) {
+        const yf = y / H - 0.5;
+        const yf2 = yf * yf;
+        const yf3 = yf2 * yf;
+        for (let x = 0; x < W; x += 4) {
+          const xf = x / W - 0.5;
+          const xf2 = xf * xf;
+          const xf3 = xf2 * xf;
+          samples.push({
+            basis: [1, xf, yf, xf2, xf * yf, yf2, xf3, xf2 * yf, xf * yf2, yf3],
+            val: gray[y * W + x],
+            w: 1.0
+          });
+        }
+      }
+
+      let beta = new Array(10).fill(0);
+      for (let iter = 0; iter < 5; iter++) {
+        const ATA = Array.from({ length: 10 }, () => new Array(10).fill(0));
+        const ATb = new Array(10).fill(0);
+        for (const s of samples) {
+          const w = s.w;
+          const B = s.basis;
+          for (let i = 0; i < 10; i++) {
+            const bw = B[i] * w;
+            ATb[i] += bw * s.val;
+            for (let j = i; j < 10; j++) {
+              ATA[i][j] += bw * B[j];
+            }
+          }
+        }
+        for (let i = 0; i < 10; i++) {
+          for (let j = 0; j < i; j++) {
+            ATA[i][j] = ATA[j][i];
+          }
+        }
+        beta = solveLinearSystem(ATA, ATb);
+
+        for (const s of samples) {
+          let pred = 0;
+          for (let i = 0; i < 10; i++) pred += s.basis[i] * beta[i];
+          const resid = Math.abs(s.val - pred);
+          s.w = resid < 4.5 ? 1.0 : 0.05;
+        }
+      }
+
+      const diff = new Float32Array(W * H);
+      const posP95 = new Float32Array(H);
+      const negP95 = new Float32Array(H);
+
+      for (let y = 0; y < H; y++) {
+        const yf = y / H - 0.5;
+        const yf2 = yf * yf;
+        const yf3 = yf2 * yf;
+        const rowPos = new Float32Array(W);
+        const rowNeg = new Float32Array(W);
+        const rowOff = y * W;
+
+        for (let x = 0; x < W; x++) {
+          if (flowerMask[rowOff + x]) continue;
+          const xf = x / W - 0.5;
+          const xf2 = xf * xf;
+          const xf3 = xf2 * xf;
+          const bg =
+            beta[0] +
+            beta[1] * xf +
+            beta[2] * yf +
+            beta[3] * xf2 +
+            beta[4] * xf * yf +
+            beta[5] * yf2 +
+            beta[6] * xf3 +
+            beta[7] * xf2 * yf +
+            beta[8] * xf * yf2 +
+            beta[9] * yf3;
+          const d = gray[rowOff + x] - bg;
+          diff[rowOff + x] = d;
+          rowPos[x] = d > 0 ? d : 0;
+          rowNeg[x] = d < 0 ? -d : 0;
+        }
+        posP95[y] = percentile(rowPos, 95);
+        negP95[y] = percentile(rowNeg, 95);
+      }
+
+      const posEnv = new Float32Array(H);
+      const negEnv = new Float32Array(H);
+      for (let y = 0; y < H; y++) {
+        let sp = 0, sn = 0, cnt = 0;
+        for (let dy = -9; dy <= 9; dy++) {
+          const ny = y + dy;
+          if (ny >= 0 && ny < H) {
+            sp += posP95[ny];
+            sn += negP95[ny];
+            cnt++;
+          }
+        }
+        posEnv[y] = sp / cnt;
+        negEnv[y] = sn / cnt;
+      }
+
+      const fg = new Float32Array(W * H);
+      const isDarkRow = new Uint8Array(H);
+      const rowFgP97 = new Float32Array(H);
+
+      for (let y = 0; y < H; y++) {
+        const dark = negEnv[y] > posEnv[y] * 1.15 && negP95[y] > 5.0;
+        isDarkRow[y] = dark ? 1 : 0;
+        const rowOff = y * W;
+        const rowVals = new Float32Array(W);
+        for (let x = 0; x < W; x++) {
+          const d = diff[rowOff + x];
+          const v = dark ? (d < 0 ? -d : 0) : (d > 0 ? d : 0);
+          fg[rowOff + x] = v;
+          rowVals[x] = v;
+        }
+        rowFgP97[y] = percentile(rowVals, 97);
+      }
+
+      const threshRatio = parseFloat(document.getElementById("ocrThreshold").value) || 0.40;
+      const binImg = new Uint8Array(W * H);
+      for (let y = 0; y < H; y++) {
+        let localRef = 0;
+        for (let dy = -18; dy <= 18; dy++) {
+          const ny = y + dy;
+          if (ny >= 0 && ny < H && rowFgP97[ny] > localRef) {
+            localRef = rowFgP97[ny];
+          }
+        }
+        const thresh = Math.max(4.2, localRef * threshRatio);
+        const rowOff = y * W;
+        for (let x = 0; x < W; x++) {
+          binImg[rowOff + x] = fg[rowOff + x] >= thresh ? 1 : 0;
+        }
+      }
+
+      ocrState.warpedImageData = warpedData;
+      ocrState.binaryMask = binImg;
+
+      const lines = [];
+      let inLine = false;
+      let yStart = 0;
+      for (let y = 0; y < H; y++) {
+        let rowCount = 0;
+        const rowOff = y * W;
+        for (let x = 0; x < W; x++) rowCount += binImg[rowOff + x];
+        if (rowCount >= 12 && !inLine) {
+          inLine = true;
+          yStart = y;
+        } else if (rowCount < 12 && inLine) {
+          inLine = false;
+          if (y - yStart >= 16) {
+            lines.push({ y0: yStart, y1: y - 1 });
+          }
+        }
+      }
+      if (inLine && H - yStart >= 16) {
+        lines.push({ y0: yStart, y1: H - 1 });
+      }
+
+      ocrState.linesData = [];
+      for (let lIdx = 0; lIdx < lines.length; lIdx++) {
+        const { y0, y1 } = lines[lIdx];
+        const lineH = y1 - y0 + 1;
+        const lineBin = binImg.subarray(y0 * W, (y1 + 1) * W);
+
+        let darkVotes = 0;
+        for (let y = y0; y <= y1; y++) darkVotes += isDarkRow[y];
+        const darkLine = darkVotes > lineH * 0.5;
+        const maxSingleW = darkLine ? 56 : 43;
+
+        const colCounts = new Int32Array(W);
+        for (let x = 0; x < W; x++) {
+          let c = 0;
+          for (let y = 0; y < lineH; y++) c += lineBin[y * W + x];
+          colCounts[x] = c;
+        }
+
+        const rawSegs = [];
+        let inSeg = false;
+        let xs = 0;
+        for (let x = 0; x < W; x++) {
+          if (colCounts[x] >= 2 && !inSeg) {
+            inSeg = true;
+            xs = x;
+          } else if (colCounts[x] < 2 && inSeg) {
+            inSeg = false;
+            if (x - xs >= 4) rawSegs.push([xs, x - 1]);
+          }
+        }
+        if (inSeg && W - xs >= 4) rawSegs.push([xs, W - 1]);
+
+        function splitRecursive(s0, s1) {
+          const w = s1 - s0 + 1;
+          if (w <= maxSingleW) {
+            if (w >= 40) {
+              const singleScore = matchPatch(lineBin, W, lineH, s0, s1)[0].score;
+              let bestSplitX = -1;
+              let bestSplitScore = singleScore + 0.08;
+              for (let x = s0 + 10; x <= s1 - 10; x++) {
+                if (colCounts[x] <= 4) {
+                  const sL = matchPatch(lineBin, W, lineH, s0, x - 1)[0].score;
+                  const sR = matchPatch(lineBin, W, lineH, x + 1, s1)[0].score;
+                  const avgS = 0.5 * (sL + sR) - colCounts[x] * 0.02;
+                  if (avgS > bestSplitScore) {
+                    bestSplitScore = avgS;
+                    bestSplitX = x;
+                  }
+                }
+              }
+              if (bestSplitX !== -1) {
+                return [[s0, bestSplitX - 1], [bestSplitX + 1, s1]];
+              }
+            }
+            return [[s0, s1]];
+          }
+
+          let bestX = -1;
+          let bestVal = -1e9;
+          for (let x = s0 + 10; x <= s1 - 10; x++) {
+            if (colCounts[x] > 16) continue;
+            const leftW = x - s0;
+            if (leftW > maxSingleW + 4) continue;
+            const sLeft = matchPatch(lineBin, W, lineH, s0, x - 1)[0].score;
+            const rightW = s1 - x;
+            let sRight = 0;
+            if (rightW <= maxSingleW + 4) {
+              sRight = matchPatch(lineBin, W, lineH, x + 1, s1)[0].score;
+            } else {
+              const r1 = matchPatch(lineBin, W, lineH, x + 1, Math.min(s1, x + 16))[0].score;
+              const r2 = matchPatch(lineBin, W, lineH, x + 1, Math.min(s1, x + 35))[0].score;
+              sRight = Math.max(r1, r2);
+            }
+            const val = sLeft + sRight - colCounts[x] * 0.035;
+            if (val > bestVal) {
+              bestVal = val;
+              bestX = x;
+            }
+          }
+          if (bestX === -1) {
+            bestX = s0 + Math.min(32, Math.floor(w / 2));
+          }
+          return [...splitRecursive(s0, bestX - 1), ...splitRecursive(bestX + 1, s1)];
+        }
+
+        const finalSegs = [];
+        for (const [s0, s1] of rawSegs) {
+          finalSegs.push(...splitRecursive(s0, s1));
+        }
+
+        const items = [];
+        let prevXe = null;
+        for (const [segX0, segX1] of finalSegs) {
+          if (prevXe !== null && segX0 - prevXe > 14) {
+            items.push({ type: "space" });
+          }
+          prevXe = segX1;
+          const topCandidates = matchPatch(lineBin, W, lineH, segX0, segX1);
+          items.push({
+            type: "glyph",
+            xs: segX0,
+            xe: segX1,
+            rawJamo: topCandidates[0].jamo,
+            jamo: topCandidates[0].jamo,
+            score: topCandidates[0].score,
+            topCandidates
+          });
+        }
+
+        ocrState.linesData.push({ y0, y1, darkLine, items });
+      }
+
+      applyTitleMirrorRule();
+      drawProcessedPreview();
+      renderOcrResults();
+    }
+
+    function applyTitleMirrorRule() {
+      const mirrorMode = document.getElementById("ocrTitleMirror").value;
+      const H_MIRROR = { "ㅏ": "ㅓ", "ㅓ": "ㅏ", "ㅑ": "ㅕ", "ㅕ": "ㅑ" };
+
+      for (const line of ocrState.linesData) {
+        for (let i = 0; i < line.items.length; i++) {
+          const it = line.items[i];
+          if (it.type !== "glyph") continue;
+          if (!it.manualOverride) {
+            it.jamo = it.rawJamo;
+          }
+        }
+
+        if (mirrorMode === "auto" && line.darkLine) {
+          for (let i = 0; i < line.items.length; i++) {
+            const it = line.items[i];
+            if (it.type !== "glyph" || it.manualOverride) continue;
+            if (
+              it.rawJamo === "ㅣ" &&
+              i + 1 < line.items.length &&
+              line.items[i + 1].type === "glyph" &&
+              !line.items[i + 1].manualOverride &&
+              line.items[i + 1].rawJamo === "ㅏ"
+            ) {
+              it.jamo = "ㅏ";
+              line.items[i + 1].jamo = "ㅣ";
+              i++;
+            } else if (H_MIRROR[it.rawJamo]) {
+              it.jamo = H_MIRROR[it.rawJamo];
+            }
+          }
+        }
+      }
+    }
+
+    function drawProcessedPreview() {
+      const W = ocrState.warpW;
+      const H = ocrState.warpH;
+      const mode = document.getElementById("ocrPreviewMode").value;
+
+      if (mode === "warped" && ocrState.warpedImageData) {
+        ocrProcCtx.putImageData(ocrState.warpedImageData, 0, 0);
+      } else if (ocrState.binaryMask) {
+        const imgData = ocrProcCtx.createImageData(W, H);
+        const d = imgData.data;
+        const b = ocrState.binaryMask;
+        for (let i = 0; i < W * H; i++) {
+          const p = i * 4;
+          d[p] = b[i] ? 238 : 16;
+          d[p + 1] = b[i] ? 242 : 20;
+          d[p + 2] = b[i] ? 255 : 32;
+          d[p + 3] = 255;
+        }
+        ocrProcCtx.putImageData(imgData, 0, 0);
+      }
+
+      ocrProcCtx.save();
+      ocrState.linesData.forEach((line, lIdx) => {
+        line.items.forEach((it, iIdx) => {
+          if (it.type !== "glyph") return;
+          const isSelected =
+            ocrState.selectedChip &&
+            ocrState.selectedChip.lineIdx === lIdx &&
+            ocrState.selectedChip.itemIdx === iIdx;
+
+          ocrProcCtx.strokeStyle = isSelected ? "#e0af68" : "rgba(115, 218, 202, 0.85)";
+          ocrProcCtx.lineWidth = isSelected ? 2.5 : 1.2;
+          ocrProcCtx.strokeRect(it.xs, line.y0, it.xe - it.xs + 1, line.y1 - line.y0 + 1);
+        });
+      });
+      ocrProcCtx.restore();
+    }
+
+    function renderOcrResults() {
+      const chipsContainer = document.getElementById("ocrChipsContainer");
+      chipsContainer.innerHTML = "";
+
+      const korLines = [];
+      const engLines = [];
+
+      ocrState.linesData.forEach((line, lIdx) => {
+        const rowEl = document.createElement("div");
+        rowEl.className = "ocr-chip-line";
+
+        const badge = document.createElement("span");
+        badge.className = "line-badge";
+        badge.textContent = `${lIdx + 1}줄`;
+        rowEl.appendChild(badge);
+
+        const lineTokens = [];
+        const lineQwertys = [];
+
+        line.items.forEach((it, iIdx) => {
+          if (it.type === "space") {
+            const sp = document.createElement("span");
+            sp.className = "chip-space";
+            rowEl.appendChild(sp);
+            lineTokens.push({ type: "space" });
+            lineQwertys.push(" ");
+          } else if (it.type === "glyph") {
+            const chip = document.createElement("span");
+            chip.className = "jamo-chip";
+            if (it.score < 0.55) chip.classList.add("low-conf");
+            if (
+              ocrState.selectedChip &&
+              ocrState.selectedChip.lineIdx === lIdx &&
+              ocrState.selectedChip.itemIdx === iIdx
+            ) {
+              chip.classList.add("selected");
+            }
+            chip.textContent = it.jamo;
+            chip.title = `신뢰도: ${(it.score * 100).toFixed(0)}% (클릭하여 다른 후보 선택)`;
+            chip.addEventListener("click", () => openChipInspector(lIdx, iIdx));
+            rowEl.appendChild(chip);
+
+            lineTokens.push({ type: "glyph", jamo: it.jamo });
+          }
+        });
+
+        // 영문 쿼티 출력 시에도 에린어 맞춤법(ㅣ+ㅏ -> ㅔ(p), ㅏ+ㅣ -> ㅐ(o) 등) 반영
+        for (let i = 0; i < lineTokens.length; i++) {
+          const cur = lineTokens[i];
+          if (cur.type === "space") {
+            lineQwertys.push(" ");
+            continue;
+          }
+          const next = i + 1 < lineTokens.length && lineTokens[i + 1].type === "glyph" ? lineTokens[i + 1].jamo : "";
+          if (cur.jamo === "ㅏ" && next === "ㅣ") {
+            lineQwertys.push("o");
+            i++;
+          } else if (cur.jamo === "ㅣ" && next === "ㅏ") {
+            lineQwertys.push("p");
+            i++;
+          } else if (cur.jamo === "ㅏ" && next === "ㅣ'") {
+            lineQwertys.push("O");
+            i++;
+          } else if (cur.jamo === "ㅣ" && next === "ㅏ'") {
+            lineQwertys.push("P");
+            i++;
+          } else {
+            lineQwertys.push(JAMO_TO_QWERTY[cur.jamo] || "");
+          }
+        }
+
+        chipsContainer.appendChild(rowEl);
+        korLines.push(assembleHangulFromJamos(lineTokens));
+        engLines.push(lineQwertys.join(""));
+      });
+
+      document.getElementById("ocrKorOutput").textContent = korLines.join("\n") || "-";
+      document.getElementById("ocrEngOutput").textContent = engLines.join("\n") || "-";
+    }
+
+    function openChipInspector(lineIdx, itemIdx) {
+      ocrState.selectedChip = { lineIdx, itemIdx };
+      const item = ocrState.linesData[lineIdx].items[itemIdx];
+      const panel = document.getElementById("inspectorPanel");
+      const title = document.getElementById("inspectorTitle");
+      const candGroup = document.getElementById("inspectorCandidates");
+
+      title.textContent = `${lineIdx + 1}줄 글자 교정 (현재: '${item.jamo}')`;
+      candGroup.innerHTML = "";
+
+      item.topCandidates.forEach(cand => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "cand-btn" + (item.jamo === cand.jamo ? " active" : "");
+        btn.textContent = `${cand.jamo} (${Math.round(cand.score * 100)}%)`;
+        btn.addEventListener("click", () => {
+          item.jamo = cand.jamo;
+          item.manualOverride = true;
+          drawProcessedPreview();
+          renderOcrResults();
+          openChipInspector(lineIdx, itemIdx);
+        });
+        candGroup.appendChild(btn);
+      });
+
+      panel.classList.add("active");
+      drawProcessedPreview();
+      renderOcrResults();
+    }
+
+    document.getElementById("btnCloseInspector").addEventListener("click", () => {
+      ocrState.selectedChip = null;
+      document.getElementById("inspectorPanel").classList.remove("active");
+      drawProcessedPreview();
+      renderOcrResults();
+    });
+
+    function getCanvasCoords(e, canvas) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: ((clientX - rect.left) / rect.width) * canvas.width,
+        y: ((clientY - rect.top) / rect.height) * canvas.height
+      };
+    }
+
+    ocrSrcCanvas.addEventListener("pointerdown", e => {
+      if (!ocrState.img) return;
+      const pt = getCanvasCoords(e, ocrSrcCanvas);
+      let bestIdx = -1;
+      let bestDist = Math.max(28, ocrSrcCanvas.width / 35);
+      ocrState.quad.forEach((q, idx) => {
+        const d = Math.hypot(q.x - pt.x, q.y - pt.y);
+        if (d < bestDist) {
+          bestDist = d;
+          bestIdx = idx;
+        }
+      });
+      if (bestIdx !== -1) {
+        ocrState.draggingIdx = bestIdx;
+        ocrSrcCanvas.setPointerCapture(e.pointerId);
+      }
+    });
+
+    ocrSrcCanvas.addEventListener("pointermove", e => {
+      if (ocrState.draggingIdx === -1) return;
+      const pt = getCanvasCoords(e, ocrSrcCanvas);
+      ocrState.quad[ocrState.draggingIdx] = {
+        x: Math.max(0, Math.min(ocrSrcCanvas.width, pt.x)),
+        y: Math.max(0, Math.min(ocrSrcCanvas.height, pt.y))
+      };
+      drawSourceCanvas();
+    });
+
+    ocrSrcCanvas.addEventListener("pointerup", () => {
+      if (ocrState.draggingIdx !== -1) {
+        ocrState.draggingIdx = -1;
+        runOcrPipeline();
+      }
+    });
+
+    function loadTargetSampleImage() {
+      const img = new Image();
+      img.onload = () => {
+        ocrState.img = img;
+        ocrState.imgLoaded = true;
+        ocrState.quad = [
+          { x: 745, y: 250 },
+          { x: 1144, y: 348 },
+          { x: 1130, y: 714 },
+          { x: 735, y: 672 }
+        ];
+        drawSourceCanvas();
+        runOcrPipeline();
+      };
+      img.onerror = () => {
+        // sample/ 폴더가 .gitignore로 제외된 배포 환경에서는 현재 샘플 텍스트 렌더링 캔버스로 자동 대체
+        const fallbackCanvas = buildRenderedCanvas(true);
+        if (fallbackCanvas) {
+          loadCustomImage(fallbackCanvas.toDataURL("image/png"));
+        }
+      };
+      img.src = "../sample/MabinogiMobile_2026101714515366.png";
+    }
+
+    function loadCustomImage(srcUrl) {
+      const img = new Image();
+      img.onload = () => {
+        ocrState.img = img;
+        ocrState.imgLoaded = true;
+        const w = img.naturalWidth || img.width;
+        const h = img.naturalHeight || img.height;
+        const mx = Math.round(w * 0.04);
+        const my = Math.round(h * 0.04);
+        ocrState.quad = [
+          { x: mx, y: my },
+          { x: w - mx, y: my },
+          { x: w - mx, y: h - my },
+          { x: mx, y: h - my }
+        ];
+        drawSourceCanvas();
+        runOcrPipeline();
+      };
+      img.src = srcUrl;
+    }
+
+    // ==================== 하단 에린어 문자 도감 생성 ====================
+    function renderCharTable() {
+      const container = document.getElementById("charTableContainer");
+      container.innerHTML = "";
+
+      for (const group of CHAR_GROUPS) {
+        const sec = document.createElement("div");
+        sec.className = "char-category";
+
+        const header = document.createElement("div");
+        header.className = "cat-header";
+        header.textContent = group.title;
+        sec.appendChild(header);
+
+        const grid = document.createElement("div");
+        grid.className = "char-grid";
+
+        for (const jamo of group.items) {
+          const card = document.createElement("div");
+          card.className = "char-card";
+          const cpHex = JAMO_TO_FF_CODE[jamo] ? `U+${JAMO_TO_FF_CODE[jamo].toString(16).toUpperCase()}` : "";
+          card.title = `'${jamo}' (전용 폰트 코드: ${cpHex}) 클릭하여 입력창에 추가`;
+
+          const img = document.createElement("img");
+          img.src = `data/transparent/${encodeURIComponent(jamo)}.png`;
+          img.alt = jamo;
+          card.appendChild(img);
+
+          const labels = document.createElement("div");
+          labels.className = "char-card-labels";
+
+          const korSpan = document.createElement("span");
+          korSpan.textContent = jamo;
+          labels.appendChild(korSpan);
+
+          const keySpan = document.createElement("span");
+          keySpan.className = "char-key";
+          keySpan.textContent = JAMO_TO_QWERTY[jamo] || "";
+          labels.appendChild(keySpan);
+
+          card.appendChild(labels);
+
+          const codeBadge = document.createElement("div");
+          codeBadge.style.fontSize = "0.66rem";
+          codeBadge.style.color = "var(--text-muted)";
+          codeBadge.style.fontFamily = "monospace";
+          codeBadge.textContent = `${cpHex} (${JAMO_TO_FF_CHAR[jamo] || ""})`;
+          card.appendChild(codeBadge);
+
+          if (SYMMETRY_INFO[jamo]) {
+            const sym = document.createElement("div");
+            sym.className = "sym-badge";
+            sym.textContent = SYMMETRY_INFO[jamo];
+            card.appendChild(sym);
+          }
+
+          card.addEventListener("click", () => {
+            if (ocrState.selectedChip && panelOcr.classList.contains("active")) {
+              const { lineIdx, itemIdx } = ocrState.selectedChip;
+              const item = ocrState.linesData[lineIdx].items[itemIdx];
+              item.jamo = jamo;
+              item.manualOverride = true;
+              drawProcessedPreview();
+              renderOcrResults();
+            } else {
+              inputText.value += jamo;
+              renderTranslation();
+            }
+          });
+
+          grid.appendChild(card);
+        }
+
+        sec.appendChild(grid);
+        container.appendChild(sec);
+      }
+    }
+
+    // ==================== 이벤트 바인딩 ====================
+    [inputText, doubleConsonantMode, compoundVowelMode, renderStyle, captionMode, glyphSize, textAlign].forEach(el => {
+      el.addEventListener("input", renderTranslation);
+      el.addEventListener("change", renderTranslation);
+    });
+
+    document.getElementById("btnPresetPoem").addEventListener("click", () => {
+      inputText.value = SAMPLE_POEM;
+      renderTranslation();
+    });
+
+    document.getElementById("btnPresetOrtho").addEventListener("click", () => {
+      inputText.value = "패션 세계 이야기 예절\n깨끗한 꽃잎과 햇살";
+      renderTranslation();
+    });
+
+    document.getElementById("btnPresetEng").addEventListener("click", () => {
+      inputText.value = "AMY\nqlqjq didsua";
+      renderTranslation();
+    });
+
+    document.getElementById("btnClear").addEventListener("click", () => {
+      inputText.value = "";
+      renderTranslation();
+    });
+
+    document.getElementById("btnCopyFontText").addEventListener("click", () => {
+      navigator.clipboard.writeText(currentFontLines.join("\n"));
+    });
+
+    document.getElementById("btnDownloadPng").addEventListener("click", downloadAsPng);
+
+    document.getElementById("btnSendRenderToOcr").addEventListener("click", () => {
+      const canvas = buildRenderedCanvas(true);
+      if (!canvas) return;
+      const dataUrl = canvas.toDataURL("image/png");
+      switchTab("ocr");
+      loadCustomImage(dataUrl);
+    });
+
+    document.getElementById("btnLoadTargetSample").addEventListener("click", loadTargetSampleImage);
+
+    document.getElementById("btnUploadTrigger").addEventListener("click", () => {
+      document.getElementById("ocrFileInput").click();
+    });
+
+    document.getElementById("ocrFileInput").addEventListener("change", e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => loadCustomImage(ev.target.result);
+      reader.readAsDataURL(file);
+    });
+
+    window.addEventListener("paste", e => {
+      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+      for (const item of items) {
+        if (item.type.indexOf("image") === 0) {
+          const blob = item.getAsFile();
+          const reader = new FileReader();
+          reader.onload = ev => {
+            switchTab("ocr");
+            loadCustomImage(ev.target.result);
+          };
+          reader.readAsDataURL(blob);
+          break;
+        }
+      }
+    });
+
+    document.getElementById("btnResetQuad").addEventListener("click", () => {
+      if (!ocrState.img) return;
+      const w = ocrSrcCanvas.width;
+      const h = ocrSrcCanvas.height;
+      const mx = Math.round(w * 0.03);
+      const my = Math.round(h * 0.03);
+      ocrState.quad = [
+        { x: mx, y: my },
+        { x: w - mx, y: my },
+        { x: w - mx, y: h - my },
+        { x: mx, y: h - my }
+      ];
+      drawSourceCanvas();
+      runOcrPipeline();
+    });
+
+    document.getElementById("ocrThreshold").addEventListener("input", e => {
+      document.getElementById("ocrThreshLabel").textContent = parseFloat(e.target.value).toFixed(2);
+      runOcrPipeline();
+    });
+
+    document.getElementById("ocrTitleMirror").addEventListener("change", () => {
+      applyTitleMirrorRule();
+      renderOcrResults();
+    });
+
+    document.getElementById("ocrPreviewMode").addEventListener("change", drawProcessedPreview);
+    document.getElementById("btnRunOcr").addEventListener("click", runOcrPipeline);
+
+    document.getElementById("btnSendOcrToText").addEventListener("click", () => {
+      const kor = document.getElementById("ocrKorOutput").textContent;
+      if (kor && kor !== "-") {
+        inputText.value = kor;
+        renderTranslation();
+        switchTab("text");
+      }
+    });
+
+    document.getElementById("btnCopyKor").addEventListener("click", () => {
+      navigator.clipboard.writeText(document.getElementById("ocrKorOutput").textContent);
+    });
+
+    document.getElementById("btnCopyEng").addEventListener("click", () => {
+      navigator.clipboard.writeText(document.getElementById("ocrEngOutput").textContent);
+    });
+
+    initOcrTemplates();
+    renderCharTable();
+    inputText.value = SAMPLE_POEM;
+    renderTranslation();
+  </script>
+</body>
+</html>

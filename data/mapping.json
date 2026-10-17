@@ -1,0 +1,761 @@
+{
+  "source": "import/19d00ea17f157c624.webp",
+  "description": "한국어/영어(두벌식) - 에린어 문자 매핑 및 고유 맞춤법 데이터 (투명 배경 + #000000 글리프)",
+  "characters": {
+    "ㄱ": {
+      "qwerty": "r",
+      "type": "consonant",
+      "decompose": [
+        "ㄱ"
+      ],
+      "jamo": "ㄱ",
+      "row": 1,
+      "col": 1,
+      "transparent_image": "data/transparent/ㄱ.png",
+      "width": 51,
+      "height": 86,
+      "font_codepoint": "U+FFA1",
+      "font_char": "ﾡ"
+    },
+    "ㄴ": {
+      "qwerty": "s",
+      "type": "consonant",
+      "decompose": [
+        "ㄴ"
+      ],
+      "jamo": "ㄴ",
+      "row": 1,
+      "col": 2,
+      "transparent_image": "data/transparent/ㄴ.png",
+      "width": 51,
+      "height": 86,
+      "font_codepoint": "U+FFA4",
+      "font_char": "ﾤ"
+    },
+    "ㄷ": {
+      "qwerty": "e",
+      "type": "consonant",
+      "decompose": [
+        "ㄷ"
+      ],
+      "jamo": "ㄷ",
+      "row": 1,
+      "col": 3,
+      "transparent_image": "data/transparent/ㄷ.png",
+      "width": 58,
+      "height": 86,
+      "font_codepoint": "U+FFA7",
+      "font_char": "ﾧ"
+    },
+    "ㄹ": {
+      "qwerty": "f",
+      "type": "consonant",
+      "decompose": [
+        "ㄹ"
+      ],
+      "jamo": "ㄹ",
+      "row": 1,
+      "col": 4,
+      "transparent_image": "data/transparent/ㄹ.png",
+      "width": 57,
+      "height": 86,
+      "font_codepoint": "U+FFA9",
+      "font_char": "ﾩ"
+    },
+    "ㅁ": {
+      "qwerty": "a",
+      "type": "consonant",
+      "decompose": [
+        "ㅁ"
+      ],
+      "jamo": "ㅁ",
+      "row": 1,
+      "col": 5,
+      "transparent_image": "data/transparent/ㅁ.png",
+      "width": 58,
+      "height": 86,
+      "font_codepoint": "U+FFB1",
+      "font_char": "ﾱ"
+    },
+    "ㅂ": {
+      "qwerty": "q",
+      "type": "consonant",
+      "decompose": [
+        "ㅂ"
+      ],
+      "jamo": "ㅂ",
+      "row": 1,
+      "col": 6,
+      "transparent_image": "data/transparent/ㅂ.png",
+      "width": 64,
+      "height": 86,
+      "font_codepoint": "U+FFB2",
+      "font_char": "ﾲ"
+    },
+    "ㅅ": {
+      "qwerty": "t",
+      "type": "consonant",
+      "decompose": [
+        "ㅅ"
+      ],
+      "jamo": "ㅅ",
+      "row": 1,
+      "col": 7,
+      "transparent_image": "data/transparent/ㅅ.png",
+      "width": 68,
+      "height": 86,
+      "font_codepoint": "U+FFB5",
+      "font_char": "ﾵ"
+    },
+    "ㅇ": {
+      "qwerty": "d",
+      "type": "consonant",
+      "decompose": [
+        "ㅇ"
+      ],
+      "jamo": "ㅇ",
+      "row": 2,
+      "col": 1,
+      "transparent_image": "data/transparent/ㅇ.png",
+      "width": 54,
+      "height": 86,
+      "font_codepoint": "U+FFB7",
+      "font_char": "ﾷ"
+    },
+    "ㅈ": {
+      "qwerty": "w",
+      "type": "consonant",
+      "decompose": [
+        "ㅈ"
+      ],
+      "jamo": "ㅈ",
+      "row": 2,
+      "col": 2,
+      "transparent_image": "data/transparent/ㅈ.png",
+      "width": 63,
+      "height": 86,
+      "font_codepoint": "U+FFB8",
+      "font_char": "ﾸ"
+    },
+    "ㅊ": {
+      "qwerty": "c",
+      "type": "consonant",
+      "decompose": [
+        "ㅊ"
+      ],
+      "jamo": "ㅊ",
+      "row": 2,
+      "col": 3,
+      "transparent_image": "data/transparent/ㅊ.png",
+      "width": 61,
+      "height": 86,
+      "font_codepoint": "U+FFBA",
+      "font_char": "ﾺ"
+    },
+    "ㅋ": {
+      "qwerty": "z",
+      "type": "consonant",
+      "decompose": [
+        "ㅋ"
+      ],
+      "jamo": "ㅋ",
+      "row": 2,
+      "col": 4,
+      "transparent_image": "data/transparent/ㅋ.png",
+      "width": 64,
+      "height": 86,
+      "font_codepoint": "U+FFBB",
+      "font_char": "ﾻ"
+    },
+    "ㅌ": {
+      "qwerty": "x",
+      "type": "consonant",
+      "decompose": [
+        "ㅌ"
+      ],
+      "jamo": "ㅌ",
+      "row": 2,
+      "col": 5,
+      "transparent_image": "data/transparent/ㅌ.png",
+      "width": 63,
+      "height": 86,
+      "font_codepoint": "U+FFBC",
+      "font_char": "ﾼ"
+    },
+    "ㅍ": {
+      "qwerty": "v",
+      "type": "consonant",
+      "decompose": [
+        "ㅍ"
+      ],
+      "jamo": "ㅍ",
+      "row": 2,
+      "col": 6,
+      "transparent_image": "data/transparent/ㅍ.png",
+      "width": 70,
+      "height": 86,
+      "font_codepoint": "U+FFBD",
+      "font_char": "ﾽ"
+    },
+    "ㅎ": {
+      "qwerty": "g",
+      "type": "consonant",
+      "decompose": [
+        "ㅎ"
+      ],
+      "jamo": "ㅎ",
+      "row": 2,
+      "col": 7,
+      "transparent_image": "data/transparent/ㅎ.png",
+      "width": 67,
+      "height": 86,
+      "font_codepoint": "U+FFBE",
+      "font_char": "ﾾ"
+    },
+    "ㄲ": {
+      "qwerty": "R",
+      "qwerty_pair": "rr",
+      "type": "double_consonant",
+      "base": "ㄱ",
+      "tick": true,
+      "decompose": [
+        "ㄱ",
+        "ㄱ"
+      ],
+      "jamo": "ㄲ",
+      "row": 3,
+      "col": 1,
+      "transparent_image": "data/transparent/ㄲ.png",
+      "width": 60,
+      "height": 86,
+      "font_codepoint": "U+FFA2",
+      "font_char": "ﾢ"
+    },
+    "ㄸ": {
+      "qwerty": "E",
+      "qwerty_pair": "ee",
+      "type": "double_consonant",
+      "base": "ㄷ",
+      "tick": true,
+      "decompose": [
+        "ㄷ",
+        "ㄷ"
+      ],
+      "jamo": "ㄸ",
+      "row": 3,
+      "col": 2,
+      "transparent_image": "data/transparent/ㄸ.png",
+      "width": 60,
+      "height": 86,
+      "font_codepoint": "U+FFA8",
+      "font_char": "ﾨ"
+    },
+    "ㅃ": {
+      "qwerty": "Q",
+      "qwerty_pair": "qq",
+      "type": "double_consonant",
+      "base": "ㅂ",
+      "tick": true,
+      "decompose": [
+        "ㅂ",
+        "ㅂ"
+      ],
+      "jamo": "ㅃ",
+      "row": 3,
+      "col": 3,
+      "transparent_image": "data/transparent/ㅃ.png",
+      "width": 63,
+      "height": 86,
+      "font_codepoint": "U+FFB3",
+      "font_char": "ﾳ"
+    },
+    "ㅆ": {
+      "qwerty": "T",
+      "qwerty_pair": "tt",
+      "type": "double_consonant",
+      "base": "ㅅ",
+      "tick": true,
+      "decompose": [
+        "ㅅ",
+        "ㅅ"
+      ],
+      "jamo": "ㅆ",
+      "row": 3,
+      "col": 4,
+      "transparent_image": "data/transparent/ㅆ.png",
+      "width": 55,
+      "height": 86,
+      "font_codepoint": "U+FFB6",
+      "font_char": "ﾶ"
+    },
+    "ㅉ": {
+      "qwerty": "W",
+      "qwerty_pair": "ww",
+      "type": "double_consonant",
+      "base": "ㅈ",
+      "tick": true,
+      "decompose": [
+        "ㅈ",
+        "ㅈ"
+      ],
+      "jamo": "ㅉ",
+      "row": 3,
+      "col": 5,
+      "transparent_image": "data/transparent/ㅉ.png",
+      "width": 56,
+      "height": 86,
+      "font_codepoint": "U+FFB9",
+      "font_char": "ﾹ"
+    },
+    "ㅏ": {
+      "qwerty": "k",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅓ",
+        "axis": "horizontal"
+      },
+      "decompose": [
+        "ㅏ"
+      ],
+      "jamo": "ㅏ",
+      "row": 4,
+      "col": 1,
+      "transparent_image": "data/transparent/ㅏ.png",
+      "width": 57,
+      "height": 86,
+      "font_codepoint": "U+FFC2",
+      "font_char": "ￂ"
+    },
+    "ㅐ": {
+      "qwerty": "o",
+      "type": "compound_vowel",
+      "orthography": "ㅏ + ㅣ",
+      "decompose": [
+        "ㅏ",
+        "ㅣ"
+      ],
+      "jamo": "ㅐ",
+      "row": 4,
+      "col": 2,
+      "transparent_image": "data/transparent/ㅐ.png",
+      "width": 66,
+      "height": 86,
+      "font_codepoint": "U+FFC3",
+      "font_char": "ￃ"
+    },
+    "ㅓ": {
+      "qwerty": "j",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅏ",
+        "axis": "horizontal"
+      },
+      "decompose": [
+        "ㅓ"
+      ],
+      "jamo": "ㅓ",
+      "row": 4,
+      "col": 3,
+      "transparent_image": "data/transparent/ㅓ.png",
+      "width": 54,
+      "height": 86,
+      "font_codepoint": "U+FFC6",
+      "font_char": "ￆ"
+    },
+    "ㅔ": {
+      "qwerty": "p",
+      "type": "compound_vowel",
+      "orthography": "ㅣ + ㅏ (주의: ㅓ+ㅣ가 아님)",
+      "decompose": [
+        "ㅣ",
+        "ㅏ"
+      ],
+      "jamo": "ㅔ",
+      "row": 4,
+      "col": 4,
+      "transparent_image": "data/transparent/ㅔ.png",
+      "width": 64,
+      "height": 86,
+      "font_codepoint": "U+FFC7",
+      "font_char": "ￇ"
+    },
+    "ㅗ": {
+      "qwerty": "h",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅜ",
+        "axis": "vertical"
+      },
+      "decompose": [
+        "ㅗ"
+      ],
+      "jamo": "ㅗ",
+      "row": 4,
+      "col": 5,
+      "transparent_image": "data/transparent/ㅗ.png",
+      "width": 61,
+      "height": 86,
+      "font_codepoint": "U+FFCC",
+      "font_char": "ￌ"
+    },
+    "ㅚ": {
+      "qwerty": "hl",
+      "type": "compound_vowel",
+      "orthography": "ㅗ + ㅣ",
+      "decompose": [
+        "ㅗ",
+        "ㅣ"
+      ],
+      "jamo": "ㅚ",
+      "row": 4,
+      "col": 6,
+      "transparent_image": "data/transparent/ㅚ.png",
+      "width": 78,
+      "height": 86,
+      "font_codepoint": "U+FFCF",
+      "font_char": "ￏ"
+    },
+    "ㅜ": {
+      "qwerty": "n",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅗ",
+        "axis": "vertical"
+      },
+      "decompose": [
+        "ㅜ"
+      ],
+      "jamo": "ㅜ",
+      "row": 4,
+      "col": 7,
+      "transparent_image": "data/transparent/ㅜ.png",
+      "width": 59,
+      "height": 86,
+      "font_codepoint": "U+FFD3",
+      "font_char": "ￓ"
+    },
+    "ㅟ": {
+      "qwerty": "nl",
+      "type": "compound_vowel",
+      "orthography": "ㅜ + ㅣ",
+      "decompose": [
+        "ㅜ",
+        "ㅣ"
+      ],
+      "jamo": "ㅟ",
+      "row": 5,
+      "col": 1,
+      "transparent_image": "data/transparent/ㅟ.png",
+      "width": 77,
+      "height": 86,
+      "font_codepoint": "U+FFD6",
+      "font_char": "ￖ"
+    },
+    "ㅡ": {
+      "qwerty": "m",
+      "type": "vowel",
+      "decompose": [
+        "ㅡ"
+      ],
+      "jamo": "ㅡ",
+      "row": 5,
+      "col": 2,
+      "transparent_image": "data/transparent/ㅡ.png",
+      "width": 50,
+      "height": 86,
+      "font_codepoint": "U+FFDA",
+      "font_char": "ￚ"
+    },
+    "ㅣ": {
+      "qwerty": "l",
+      "type": "vowel",
+      "decompose": [
+        "ㅣ"
+      ],
+      "jamo": "ㅣ",
+      "row": 5,
+      "col": 3,
+      "transparent_image": "data/transparent/ㅣ.png",
+      "width": 33,
+      "height": 86,
+      "font_codepoint": "U+FFDC",
+      "font_char": "ￜ"
+    },
+    "ㅑ": {
+      "qwerty": "i",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅕ",
+        "axis": "horizontal"
+      },
+      "decompose": [
+        "ㅑ"
+      ],
+      "jamo": "ㅑ",
+      "row": 5,
+      "col": 4,
+      "transparent_image": "data/transparent/ㅑ.png",
+      "width": 66,
+      "height": 86,
+      "font_codepoint": "U+FFC4",
+      "font_char": "ￄ"
+    },
+    "ㅒ": {
+      "qwerty": "O",
+      "type": "compound_vowel",
+      "base": "ㅐ",
+      "tick": true,
+      "orthography": "ㅐ(ㅏ+ㅣ) 오른쪽 위에 반점",
+      "decompose": [
+        "ㅒ"
+      ],
+      "jamo": "ㅒ",
+      "row": 5,
+      "col": 5,
+      "transparent_image": "data/transparent/ㅒ.png",
+      "width": 66,
+      "height": 86,
+      "font_codepoint": "U+FFC5",
+      "font_char": "ￅ"
+    },
+    "ㅕ": {
+      "qwerty": "u",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅑ",
+        "axis": "horizontal"
+      },
+      "decompose": [
+        "ㅕ"
+      ],
+      "jamo": "ㅕ",
+      "row": 5,
+      "col": 6,
+      "transparent_image": "data/transparent/ㅕ.png",
+      "width": 54,
+      "height": 86,
+      "font_codepoint": "U+FFCA",
+      "font_char": "ￊ"
+    },
+    "ㅖ": {
+      "qwerty": "P",
+      "type": "compound_vowel",
+      "base": "ㅔ",
+      "tick": true,
+      "orthography": "ㅔ(ㅣ+ㅏ) 오른쪽 위에 반점",
+      "decompose": [
+        "ㅖ"
+      ],
+      "jamo": "ㅖ",
+      "row": 5,
+      "col": 7,
+      "transparent_image": "data/transparent/ㅖ.png",
+      "width": 71,
+      "height": 86,
+      "font_codepoint": "U+FFCB",
+      "font_char": "ￋ"
+    },
+    "ㅘ": {
+      "qwerty": "hk",
+      "type": "compound_vowel",
+      "orthography": "ㅗ + ㅏ",
+      "decompose": [
+        "ㅗ",
+        "ㅏ"
+      ],
+      "jamo": "ㅘ",
+      "row": 6,
+      "col": 1,
+      "transparent_image": "data/transparent/ㅘ.png",
+      "width": 88,
+      "height": 86,
+      "font_codepoint": "U+FFCD",
+      "font_char": "ￍ"
+    },
+    "ㅙ": {
+      "qwerty": "ho",
+      "type": "compound_vowel",
+      "orthography": "ㅗ + ㅐ(ㅏ+ㅣ)",
+      "decompose": [
+        "ㅗ",
+        "ㅏ",
+        "ㅣ"
+      ],
+      "jamo": "ㅙ",
+      "row": 6,
+      "col": 2,
+      "transparent_image": "data/transparent/ㅙ.png",
+      "width": 92,
+      "height": 86,
+      "font_codepoint": "U+FFCE",
+      "font_char": "ￎ"
+    },
+    "ㅛ": {
+      "qwerty": "y",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅠ",
+        "axis": "vertical"
+      },
+      "decompose": [
+        "ㅛ"
+      ],
+      "jamo": "ㅛ",
+      "row": 6,
+      "col": 3,
+      "transparent_image": "data/transparent/ㅛ.png",
+      "width": 52,
+      "height": 86,
+      "font_codepoint": "U+FFD2",
+      "font_char": "ￒ"
+    },
+    "ㅝ": {
+      "qwerty": "nj",
+      "type": "compound_vowel",
+      "orthography": "ㅜ + ㅓ",
+      "decompose": [
+        "ㅜ",
+        "ㅓ"
+      ],
+      "jamo": "ㅝ",
+      "row": 6,
+      "col": 4,
+      "transparent_image": "data/transparent/ㅝ.png",
+      "width": 93,
+      "height": 86,
+      "font_codepoint": "U+FFD4",
+      "font_char": "ￔ"
+    },
+    "ㅞ": {
+      "qwerty": "np",
+      "type": "compound_vowel",
+      "orthography": "ㅜ + ㅔ(ㅣ+ㅏ)",
+      "decompose": [
+        "ㅜ",
+        "ㅣ",
+        "ㅏ"
+      ],
+      "jamo": "ㅞ",
+      "row": 6,
+      "col": 5,
+      "transparent_image": "data/transparent/ㅞ.png",
+      "width": 88,
+      "height": 86,
+      "font_codepoint": "U+FFD5",
+      "font_char": "ￕ"
+    },
+    "ㅠ": {
+      "qwerty": "b",
+      "type": "vowel",
+      "symmetry": {
+        "target": "ㅛ",
+        "axis": "vertical"
+      },
+      "decompose": [
+        "ㅠ"
+      ],
+      "jamo": "ㅠ",
+      "row": 6,
+      "col": 6,
+      "transparent_image": "data/transparent/ㅠ.png",
+      "width": 50,
+      "height": 86,
+      "font_codepoint": "U+FFD7",
+      "font_char": "ￗ"
+    },
+    "ㅢ": {
+      "qwerty": "ml",
+      "type": "compound_vowel",
+      "orthography": "ㅡ + ㅣ",
+      "decompose": [
+        "ㅡ",
+        "ㅣ"
+      ],
+      "jamo": "ㅢ",
+      "row": 6,
+      "col": 7,
+      "transparent_image": "data/transparent/ㅢ.png",
+      "width": 65,
+      "height": 86,
+      "font_codepoint": "U+FFDB",
+      "font_char": "ￛ"
+    }
+  },
+  "qwerty_to_jamo": {
+    "r": "ㄱ",
+    "s": "ㄴ",
+    "e": "ㄷ",
+    "f": "ㄹ",
+    "a": "ㅁ",
+    "q": "ㅂ",
+    "t": "ㅅ",
+    "d": "ㅇ",
+    "w": "ㅈ",
+    "c": "ㅊ",
+    "z": "ㅋ",
+    "x": "ㅌ",
+    "v": "ㅍ",
+    "g": "ㅎ",
+    "R": "ㄲ",
+    "E": "ㄸ",
+    "Q": "ㅃ",
+    "T": "ㅆ",
+    "W": "ㅉ",
+    "k": "ㅏ",
+    "o": "ㅐ",
+    "j": "ㅓ",
+    "p": "ㅔ",
+    "h": "ㅗ",
+    "n": "ㅜ",
+    "m": "ㅡ",
+    "l": "ㅣ",
+    "i": "ㅑ",
+    "O": "ㅒ",
+    "u": "ㅕ",
+    "P": "ㅖ",
+    "y": "ㅛ",
+    "b": "ㅠ"
+  },
+  "ff_unicode_to_jamo": {
+    "ﾡ": "ㄱ",
+    "ﾤ": "ㄴ",
+    "ﾧ": "ㄷ",
+    "ﾩ": "ㄹ",
+    "ﾱ": "ㅁ",
+    "ﾲ": "ㅂ",
+    "ﾵ": "ㅅ",
+    "ﾷ": "ㅇ",
+    "ﾸ": "ㅈ",
+    "ﾺ": "ㅊ",
+    "ﾻ": "ㅋ",
+    "ﾼ": "ㅌ",
+    "ﾽ": "ㅍ",
+    "ﾾ": "ㅎ",
+    "ﾢ": "ㄲ",
+    "ﾨ": "ㄸ",
+    "ﾳ": "ㅃ",
+    "ﾶ": "ㅆ",
+    "ﾹ": "ㅉ",
+    "ￂ": "ㅏ",
+    "ￃ": "ㅐ",
+    "ￆ": "ㅓ",
+    "ￇ": "ㅔ",
+    "ￌ": "ㅗ",
+    "ￏ": "ㅚ",
+    "ￓ": "ㅜ",
+    "ￖ": "ㅟ",
+    "ￚ": "ㅡ",
+    "ￜ": "ㅣ",
+    "ￄ": "ㅑ",
+    "ￅ": "ㅒ",
+    "ￊ": "ㅕ",
+    "ￋ": "ㅖ",
+    "ￍ": "ㅘ",
+    "ￎ": "ㅙ",
+    "ￒ": "ㅛ",
+    "ￔ": "ㅝ",
+    "ￕ": "ㅞ",
+    "ￗ": "ㅠ",
+    "ￛ": "ㅢ"
+  }
+}
